@@ -19,7 +19,8 @@ class Settings:
 
     # CORS configuration
     _raw_origins = os.getenv(
-        "ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+        "ALLOWED_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173,https://orbit-delta-earth.vercel.app,*",
     )
     ALLOWED_ORIGINS: List[str] = [
         origin.strip() for origin in _raw_origins.split(",") if origin.strip()

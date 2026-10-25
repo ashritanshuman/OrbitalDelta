@@ -46,14 +46,25 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
-    # Configure CORS for Vite frontend
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=settings.ALLOWED_ORIGINS,
-        allow_credentials=True,
-        allow_methods=["GET", "POST", "OPTIONS"],
-        allow_headers=["*"],
-    )
+    # Configure CORS for Vite frontend (supports localhost, Vercel deployments, and custom domains)
+    origins = settings.ALLOWED_ORIGINS
+    if "*" in origins:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=False,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+    else:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=origins,
+            allow_origin_regex=r"https://.*\.vercel\.app|http://localhost:\d+|http://127\.0\.0\.1:\d+",
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
 
     # Register standardized error handlers
     setup_exception_handlers(app)
