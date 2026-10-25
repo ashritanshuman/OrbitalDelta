@@ -3,6 +3,7 @@ import ComparisonViewer from './ComparisonViewer';
 import MetricsRow from './MetricsRow';
 import RegionList from './RegionList';
 import ReportPanel from './ReportPanel';
+import PresetDatasets from './PresetDatasets';
 
 export function ResultsStage({
   result,
@@ -18,6 +19,11 @@ export function ResultsStage({
   setHoveredRegionId,
   selectedRegionId,
   setSelectedRegionId,
+  presets = [],
+  activePresetId = null,
+  onSelectPreset,
+  presetLoading = false,
+  loadingPresetId = null,
   onReset,
 }) {
   const handleSelectRegion = useCallback(
@@ -94,6 +100,19 @@ export function ResultsStage({
           />
         </div>
       </div>
+
+      {/* Full-width Benchmark Preset Selector in Results View */}
+      {presets && presets.length > 0 && (
+        <div className="p-4 bg-[#0A0E13] border-t border-line">
+          <PresetDatasets
+            presets={presets}
+            activePresetId={activePresetId}
+            onSelectPreset={onSelectPreset}
+            presetLoading={presetLoading}
+            loadingPresetId={loadingPresetId}
+          />
+        </div>
+      )}
     </div>
   );
 }

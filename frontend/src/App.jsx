@@ -12,8 +12,8 @@ import { useAnalysis } from './hooks/useAnalysis';
 export function App() {
   const analysisHook = useAnalysis();
 
-  const handleLoadSampleAndScroll = (sampleId = 'forest') => {
-    analysisHook.setActiveSampleId(sampleId);
+  const handleLoadSampleAndScroll = (presetId = 'deforestation') => {
+    analysisHook.loadPreset(presetId);
     const el = document.getElementById('analyzer');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });

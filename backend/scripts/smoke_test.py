@@ -12,10 +12,10 @@ from pathlib import Path
 import httpx
 
 SAMPLE_PAIRS = [
-    ("forest", "Deforestation", "forest_t1.jpg", "forest_t2.jpg"),
-    ("urban", "Urban construction", "urban_t1.jpg", "urban_t2.jpg"),
-    ("coast", "Coastal erosion", "coast_t1.jpg", "coast_t2.jpg"),
-    ("flood", "Flood damage", "flood_t1.jpg", "flood_t2.jpg"),
+    ("deforestation", "Deforestation", "deforestation/before.jpg", "deforestation/after.jpg"),
+    ("urban", "Urban construction", "urban/before.jpg", "urban/after.jpg"),
+    ("coastal", "Coastal erosion", "coastal/before.jpg", "coastal/after.jpg"),
+    ("flood", "Flood damage", "flood/before.jpg", "flood/after.jpg"),
 ]
 
 

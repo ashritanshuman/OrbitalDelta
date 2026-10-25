@@ -1,40 +1,44 @@
 export const MOCK_SAMPLES = [
   {
-    id: 'forest',
+    id: 'deforestation',
+    label: 'Deforestation',
     name: 'Deforestation',
     description: 'Amazon Basin Sector 448B canopy depletion and logging roads',
-    before: '/samples/forest_t1.jpg',
-    after: '/samples/forest_t2.jpg',
-    overlay_url: '/samples/forest_overlay.png',
+    before: '/samples/deforestation/before.jpg',
+    after: '/samples/deforestation/after.jpg',
+    overlay_url: '/samples/deforestation/after.jpg',
   },
   {
     id: 'urban',
+    label: 'Urban construction',
     name: 'Urban construction',
     description: 'Rapid commercial building development and transport corridor',
-    before: '/samples/urban_t1.jpg',
-    after: '/samples/urban_t2.jpg',
-    overlay_url: '/samples/urban_overlay.png',
+    before: '/samples/urban/before.jpg',
+    after: '/samples/urban/after.jpg',
+    overlay_url: '/samples/urban/after.jpg',
   },
   {
     id: 'coastal',
+    label: 'Coastal erosion',
     name: 'Coastal erosion',
     description: 'Wave-action shoreline loss and barrier island degradation',
-    before: '/samples/coastal_t1.jpg',
-    after: '/samples/coastal_t2.jpg',
-    overlay_url: '/samples/coastal_overlay.png',
+    before: '/samples/coastal/before.jpg',
+    after: '/samples/coastal/after.jpg',
+    overlay_url: '/samples/coastal/after.jpg',
   },
   {
     id: 'flood',
+    label: 'Flood damage',
     name: 'Flood damage',
     description: 'Monsoon river overflow and crop inundation perimeter',
-    before: '/samples/flood_t1.jpg',
-    after: '/samples/flood_t2.jpg',
-    overlay_url: '/samples/flood_overlay.png',
+    before: '/samples/flood/before.jpg',
+    after: '/samples/flood/after.jpg',
+    overlay_url: '/samples/flood/after.jpg',
   },
 ];
 
 export const MOCK_RESULTS = {
-  forest: {
+  deforestation: {
     id: 'OD-AMZ-448B',
     image_size: { width: 1024, height: 768 },
     overlay_url: '/samples/forest_overlay.png',
@@ -172,6 +176,8 @@ export const MOCK_RESULTS = {
   },
 };
 
-export function getMockAnalysis(sampleId = 'forest') {
-  return MOCK_RESULTS[sampleId] || MOCK_RESULTS.forest;
+MOCK_RESULTS.forest = MOCK_RESULTS.deforestation;
+
+export function getMockAnalysis(sampleId = 'deforestation') {
+  return MOCK_RESULTS[sampleId] || MOCK_RESULTS.deforestation;
 }

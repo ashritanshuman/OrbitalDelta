@@ -1,17 +1,20 @@
 import React from 'react';
 import DropZone from './DropZone';
-import SampleMenu from './SampleMenu';
+import PresetDatasets from './PresetDatasets';
 import ChamferButton from '../ui/ChamferButton';
 import { Play } from 'lucide-react';
 
 export function UploadStage({
   t1Drop,
   t2Drop,
-  samples,
-  activeSampleId,
-  onSelectSample,
+  presets = [],
+  activePresetId = null,
+  onSelectPreset,
+  presetLoading = false,
+  loadingPresetId = null,
   onRunAnalysis,
-  canRun,
+  canRun = false,
+  disabled = false,
 }) {
   return (
     <div className="w-full flex flex-col justify-between">
@@ -82,11 +85,14 @@ export function UploadStage({
           />
         </div>
 
-        {/* Preset Sample Selector */}
-        <SampleMenu
-          samples={samples}
-          activeSampleId={activeSampleId}
-          onSelectSample={onSelectSample}
+        {/* Preset Benchmark Dataset Selector */}
+        <PresetDatasets
+          presets={presets}
+          activePresetId={activePresetId}
+          onSelectPreset={onSelectPreset}
+          presetLoading={presetLoading}
+          loadingPresetId={loadingPresetId}
+          disabled={disabled}
         />
 
         {/* Run Analysis Action Button */}
@@ -99,7 +105,7 @@ export function UploadStage({
             id="btn-run-analysis"
             size="lg"
             variant="primary"
-            disabled={!canRun}
+            disabled={!canRun || disabled || presetLoading}
             onClick={onRunAnalysis}
             icon={Play}
             className="w-full sm:w-auto"

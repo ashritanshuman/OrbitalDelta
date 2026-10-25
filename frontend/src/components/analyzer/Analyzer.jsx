@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useFileDrop } from '../../hooks/useFileDrop';
 import Panel from '../ui/Panel';
 import Banner from '../ui/Banner';
 import UploadStage from './UploadStage';
@@ -14,9 +13,14 @@ export function Analyzer({ analysisHook }) {
     setState,
     result,
     error,
-    samples,
-    activeSampleId,
-    setActiveSampleId,
+    presets,
+    activePresetId,
+    presetLoading,
+    loadingPresetId,
+    presetError,
+    loadPreset,
+    t1Drop,
+    t2Drop,
     viewMode,
     setViewMode,
     sliderPosition,
@@ -34,21 +38,7 @@ export function Analyzer({ analysisHook }) {
     resetAnalysis,
   } = analysisHook;
 
-  // Initialize dropzones (ready for user upload or preset selection)
-  const t1Drop = useFileDrop(null);
-  const t2Drop = useFileDrop(null);
-
-  // Handle preset sample selection
-  const handleSelectSample = (sample) => {
-    setActiveSampleId(sample.id);
-    t1Drop.setExplicitUrl(sample.before);
-    t2Drop.setExplicitUrl(sample.after);
-    if (state === 'error') {
-      setState('ready');
-    }
-  };
-
-  // State transitions: when both drops have a file or url, state is 'ready' (unless processing/results)
+  // When both dropzones have previews, state is 'ready' (unless currently processing or showing results)
   const hasBothImages = Boolean(t1Drop.previewUrl && t2Drop.previewUrl);
 
   useEffect(() => {
@@ -64,8 +54,7 @@ export function Analyzer({ analysisHook }) {
     startAnalysis(
       t1Drop.file,
       t2Drop.file,
-      t1Drop.previewUrl,
-      t2Drop.previewUrl
+      activePresetId
     );
   };
 
@@ -95,8 +84,18 @@ export function Analyzer({ analysisHook }) {
           </div>
         </div>
 
-        {/* Error Banner */}
-        {state === 'error' && error && (
+        {/* Preset Error Banner with Retry */}
+        {presetError && (
+          <div className="mb-6">
+            <Banner
+              message={presetError}
+              onRetry={() => loadPreset(activePresetId || 'deforestation')}
+            />
+          </div>
+        )}
+
+        {/* Pipeline Error Banner */}
+        {state === 'error' && error && !presetError && (
           <div className="mb-6">
             <Banner message={error} onRetry={handleRun} />
           </div>
@@ -125,17 +124,25 @@ export function Analyzer({ analysisHook }) {
               setHoveredRegionId={setHoveredRegionId}
               selectedRegionId={selectedRegionId}
               setSelectedRegionId={setSelectedRegionId}
+              presets={presets}
+              activePresetId={activePresetId}
+              onSelectPreset={loadPreset}
+              presetLoading={presetLoading}
+              loadingPresetId={loadingPresetId}
               onReset={handleReset}
             />
           ) : (
             <UploadStage
               t1Drop={t1Drop}
               t2Drop={t2Drop}
-              samples={samples}
-              activeSampleId={activeSampleId}
-              onSelectSample={handleSelectSample}
+              presets={presets}
+              activePresetId={activePresetId}
+              onSelectPreset={loadPreset}
+              presetLoading={presetLoading}
+              loadingPresetId={loadingPresetId}
               onRunAnalysis={handleRun}
               canRun={hasBothImages}
+              disabled={state === 'processing'}
             />
           )}
         </Panel>
@@ -157,16 +164,16 @@ export function Analyzer({ analysisHook }) {
           {state === 'results' ? (
             <ChamferButton
               size="sm"
-              variant="primary"
+              variant="secondary"
               onClick={handleReset}
             >
-              NEW SCAN
+              RESET
             </ChamferButton>
           ) : (
             <ChamferButton
               size="sm"
               variant="primary"
-              disabled={!hasBothImages}
+              disabled={!hasBothImages || presetLoading}
               onClick={handleRun}
               icon={Play}
             >

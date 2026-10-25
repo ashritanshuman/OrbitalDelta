@@ -32,9 +32,9 @@ def test_samples_endpoint():
     assert len(data) >= 4
 
     sample_ids = [s["id"] for s in data]
-    assert "forest" in sample_ids
+    assert "deforestation" in sample_ids
     assert "urban" in sample_ids
-    assert "coast" in sample_ids
+    assert "coastal" in sample_ids
     assert "flood" in sample_ids
 
     for item in data:
@@ -48,16 +48,19 @@ def test_samples_endpoint():
 
 def test_analyze_happy_path():
     """Verify POST /api/analyze processes valid orbital imagery end-to-end."""
-    t1_path = SAMPLES_DIR / "forest_t1.jpg"
-    t2_path = SAMPLES_DIR / "forest_t2.jpg"
+    t1_path = SAMPLES_DIR / "deforestation" / "before.jpg"
+    t2_path = SAMPLES_DIR / "deforestation" / "after.jpg"
+    if not t1_path.exists():
+        t1_path = SAMPLES_DIR / "forest_t1.jpg"
+        t2_path = SAMPLES_DIR / "forest_t2.jpg"
 
     assert t1_path.exists(), f"Sample file not found at {t1_path}"
     assert t2_path.exists(), f"Sample file not found at {t2_path}"
 
     with open(t1_path, "rb") as f1, open(t2_path, "rb") as f2:
         files = {
-            "before": ("forest_t1.jpg", f1.read(), "image/jpeg"),
-            "after": ("forest_t2.jpg", f2.read(), "image/jpeg"),
+            "before": ("before.jpg", f1.read(), "image/jpeg"),
+            "after": ("after.jpg", f2.read(), "image/jpeg"),
         }
 
     response = client.post("/api/analyze", files=files)
@@ -159,13 +162,16 @@ def test_analyze_fallback_mode_without_key(monkeypatch):
     assert health_resp.status_code == 200
     assert health_resp.json()["gemini"] is False
 
-    t1_path = SAMPLES_DIR / "forest_t1.jpg"
-    t2_path = SAMPLES_DIR / "forest_t2.jpg"
+    t1_path = SAMPLES_DIR / "deforestation" / "before.jpg"
+    t2_path = SAMPLES_DIR / "deforestation" / "after.jpg"
+    if not t1_path.exists():
+        t1_path = SAMPLES_DIR / "forest_t1.jpg"
+        t2_path = SAMPLES_DIR / "forest_t2.jpg"
 
     with open(t1_path, "rb") as f1, open(t2_path, "rb") as f2:
         files = {
-            "before": ("forest_t1.jpg", f1.read(), "image/jpeg"),
-            "after": ("forest_t2.jpg", f2.read(), "image/jpeg"),
+            "before": ("before.jpg", f1.read(), "image/jpeg"),
+            "after": ("after.jpg", f2.read(), "image/jpeg"),
         }
 
     response = client.post("/api/analyze", files=files)

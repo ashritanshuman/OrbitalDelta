@@ -49,15 +49,23 @@ async def analyze_images(
     async def extract_bytes(input_data: Union[UploadFile, str], role: str) -> bytes:
         if isinstance(input_data, str):
             # Resolve potential sample reference
-            target_str = input_data.strip()
-            # If string is a path like /samples/urban_t1.jpg
-            candidate_name = Path(target_str).name if target_str and target_str != "null" else ""
-            candidate_path = settings.SAMPLES_DIR / candidate_name if candidate_name else None
+            target_str = input_data.strip().lstrip("/")
+            # Remove leading "samples/" if present
+            if target_str.startswith("samples/"):
+                target_str = target_str[len("samples/"):]
+            
+            candidate_path = settings.SAMPLES_DIR / target_str if target_str and target_str != "null" else None
 
             if not candidate_path or not candidate_path.exists():
-                # Fallback to default sample if "null" or missing
-                fallback_name = f"forest_{role}.jpg"
-                candidate_path = settings.SAMPLES_DIR / fallback_name
+                # Try by filename only
+                cand_name = Path(target_str).name
+                candidate_path = settings.SAMPLES_DIR / cand_name if cand_name else None
+
+            if not candidate_path or not candidate_path.exists():
+                # Fallback to default sample
+                candidate_path = settings.SAMPLES_DIR / "deforestation" / f"{role}.jpg"
+                if not candidate_path.exists():
+                    candidate_path = settings.SAMPLES_DIR / f"forest_{role}.jpg"
 
             if candidate_path and candidate_path.exists():
                 return candidate_path.read_bytes()

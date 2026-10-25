@@ -9,6 +9,15 @@ export async function getSamples() {
   }
 
   try {
+    const res = await fetch('/samples/manifest.json');
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (e) {
+    // ignore
+  }
+
+  try {
     const response = await apiClient.get('/api/samples');
     return response.data;
   } catch (err) {
@@ -22,7 +31,7 @@ export async function getSamples() {
   }
 }
 
-export async function analyzeImages(beforeFile, afterFile, activeSampleId = 'forest', signal) {
+export async function analyzeImages(beforeFile, afterFile, activeSampleId = 'deforestation', signal) {
   if (USE_MOCK) {
     // 3 second realistic inference delay as specified in requirements
     await new Promise((resolve, reject) => {
@@ -43,7 +52,7 @@ export async function analyzeImages(beforeFile, afterFile, activeSampleId = 'for
 
   // If beforeFile or afterFile is null or a string (e.g. from preset selection), fetch sample blob
   if (!(bFile instanceof Blob)) {
-    const url = typeof bFile === 'string' && bFile !== 'null' ? bFile : `/samples/${activeSampleId}_t1.jpg`;
+    const url = typeof bFile === 'string' && bFile !== 'null' ? bFile : `/samples/${activeSampleId}/before.jpg`;
     try {
       const res = await fetch(url);
       if (res.ok) bFile = await res.blob();
@@ -53,7 +62,7 @@ export async function analyzeImages(beforeFile, afterFile, activeSampleId = 'for
   }
 
   if (!(aFile instanceof Blob)) {
-    const url = typeof aFile === 'string' && aFile !== 'null' ? aFile : `/samples/${activeSampleId}_t2.jpg`;
+    const url = typeof aFile === 'string' && aFile !== 'null' ? aFile : `/samples/${activeSampleId}/after.jpg`;
     try {
       const res = await fetch(url);
       if (res.ok) aFile = await res.blob();

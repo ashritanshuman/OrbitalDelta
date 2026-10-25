@@ -75,7 +75,7 @@ export function Hero({ onLoadSampleAndScroll }) {
               type="button"
               onClick={() => {
                 if (onLoadSampleAndScroll) {
-                  onLoadSampleAndScroll('forest');
+                  onLoadSampleAndScroll('deforestation');
                 } else {
                   const el = document.getElementById('analyzer');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });

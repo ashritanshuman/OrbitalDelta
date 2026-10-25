@@ -8,7 +8,7 @@ export function UseCases() {
       title: 'Canopy & Biosphere Monitoring',
       description:
         'Automated illegal logging detection, forest boundary degradation, and conservation easement tracking across vulnerable equatorial biomes.',
-      image: '/samples/forest_t2.jpg',
+      image: '/samples/deforestation/after.jpg',
       statLabel: 'SPECTRAL NDVI DRIFT',
       statValue: '99.2% RECALL',
     },
@@ -17,7 +17,7 @@ export function UseCases() {
       title: 'Civil Works & Industrial Expansion',
       description:
         'Track unpermitted ground breaking, linear utility construction progress, mining perimeter growth, and port terminal logistical velocity.',
-      image: '/samples/urban_t2.jpg',
+      image: '/samples/urban/after.jpg',
       statLabel: 'SURFACE RECTIFICATION',
       statValue: 'WEEKLY AUDIT',
     },
@@ -26,7 +26,7 @@ export function UseCases() {
       title: 'Rapid Damage Assessment',
       description:
         'Quantify flood inundation margins, catastrophic storm surge coastline loss, wildfire burn scar delineation, and critical facility compromise.',
-      image: '/samples/flood_t2.jpg',
+      image: '/samples/flood/after.jpg',
       statLabel: 'FIRST RESPONDER PIPELINE',
       statValue: '<2H TURNAROUND',
     },
