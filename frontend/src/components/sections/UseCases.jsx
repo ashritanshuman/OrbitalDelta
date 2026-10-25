@@ -4,31 +4,36 @@ import Section from '../layout/Section';
 export function UseCases() {
   const cases = [
     {
-      badge: 'FORESTRY',
-      title: 'Canopy & Biosphere Monitoring',
-      description:
-        'Automated illegal logging detection, forest boundary degradation, and conservation easement tracking across vulnerable equatorial biomes.',
+      badge: 'FORESTS',
+      title: 'Forests',
+      description: 'Spot cleared or burned forest.',
       image: '/samples/deforestation/after.jpg',
-      statLabel: 'SPECTRAL NDVI DRIFT',
-      statValue: '99.2% RECALL',
+      statLabel: 'EXAMPLE',
+      statValue: 'Tree loss',
     },
     {
-      badge: 'INFRASTRUCTURE',
-      title: 'Civil Works & Industrial Expansion',
-      description:
-        'Track unpermitted ground breaking, linear utility construction progress, mining perimeter growth, and port terminal logistical velocity.',
+      badge: 'COASTLINES',
+      title: 'Coastlines',
+      description: 'See how shorelines move over time.',
+      image: '/samples/coastal/after.jpg',
+      statLabel: 'EXAMPLE',
+      statValue: 'Erosion',
+    },
+    {
+      badge: 'CITIES',
+      title: 'Cities',
+      description: 'Track new buildings and roads.',
       image: '/samples/urban/after.jpg',
-      statLabel: 'SURFACE RECTIFICATION',
-      statValue: 'WEEKLY AUDIT',
+      statLabel: 'EXAMPLE',
+      statValue: 'Construction',
     },
     {
-      badge: 'DISASTER RESPONSE',
-      title: 'Rapid Damage Assessment',
-      description:
-        'Quantify flood inundation margins, catastrophic storm surge coastline loss, wildfire burn scar delineation, and critical facility compromise.',
+      badge: 'DISASTERS',
+      title: 'Disasters',
+      description: 'Check flood or storm damage.',
       image: '/samples/flood/after.jpg',
-      statLabel: 'FIRST RESPONDER PIPELINE',
-      statValue: '<2H TURNAROUND',
+      statLabel: 'EXAMPLE',
+      statValue: 'Storm damage',
     },
   ];
 
@@ -36,11 +41,11 @@ export function UseCases() {
     <Section
       id="applications"
       number="03"
-      category="APPLICATIONS"
-      title="Built for observation at scale."
-      rightContent="MISSION READY // DUAL-USE GEOSPATIAL"
+      category="USES"
+      title="Where this can help"
+      rightContent="REAL-WORLD EXAMPLES"
     >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cases.map((c, idx) => (
           <div
             key={idx}

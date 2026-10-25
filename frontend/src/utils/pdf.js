@@ -57,14 +57,14 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   doc.setTextColor(255, 90, 31); // Accent
   doc.setFont('courier', 'bold');
   doc.setFontSize(10);
-  doc.text('ORBITAL DELTA // MISSION INTELLIGENCE DOSSIER', margin + 4, y + 6);
+  doc.text('ORBITAL DELTA // SATELLITE PHOTO REPORT', margin + 4, y + 6);
 
   doc.setTextColor(138, 146, 157); // Muted
   doc.setFont('courier', 'normal');
   doc.setFontSize(8);
   const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
-  doc.text(`ID: ${result.id || 'OD-SEC-448B'} | TIMESTAMP: ${timestamp}`, margin + 4, y + 12);
-  doc.text('CLASSIFICATION: UNCLASSIFIED // DUAL-USE EARTH OBSERVATION', margin + 4, y + 17);
+  doc.text(`ID: ${result.id || 'OD-448B'} | TIMESTAMP: ${timestamp}`, margin + 4, y + 12);
+  doc.text('AI SATELLITE CHANGE DETECTION REPORT', margin + 4, y + 17);
 
   y += 28;
 
@@ -77,7 +77,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   // Metric 1: Changed Area
   doc.setTextColor(138, 146, 157);
   doc.setFontSize(7);
-  doc.text('SURFACE VARIANCE', margin + 4, y + 5);
+  doc.text('AREA CHANGED', margin + 4, y + 5);
   doc.setTextColor(255, 90, 31);
   doc.setFontSize(12);
   doc.setFont('courier', 'bold');
@@ -87,17 +87,17 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   doc.setTextColor(138, 146, 157);
   doc.setFont('courier', 'normal');
   doc.setFontSize(7);
-  doc.text('IDENTIFIED ANOMALIES', margin + colWidth + 4, y + 5);
+  doc.text('CHANGES FOUND', margin + colWidth + 4, y + 5);
   doc.setTextColor(236, 238, 241);
   doc.setFontSize(12);
   doc.setFont('courier', 'bold');
-  doc.text(`${(result.regions && result.regions.length) || 0} SECTORS`, margin + colWidth + 4, y + 12);
+  doc.text(`${(result.regions && result.regions.length) || 0} AREAS`, margin + colWidth + 4, y + 12);
 
   // Metric 3: Confidence
   doc.setTextColor(138, 146, 157);
   doc.setFont('courier', 'normal');
   doc.setFontSize(7);
-  doc.text('CONFIDENCE CALIBRATION', margin + colWidth * 2 + 4, y + 5);
+  doc.text('HOW SURE THE AI IS', margin + colWidth * 2 + 4, y + 5);
   doc.setTextColor(61, 220, 132); // #3DDC84 ok
   doc.setFontSize(12);
   doc.setFont('courier', 'bold');
@@ -127,7 +127,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   doc.setTextColor(138, 146, 157);
   doc.setFontSize(7);
   doc.setFont('courier', 'bold');
-  doc.text('T1: REFERENCE BASELINE EPOCH', margin + 3, y + imgBoxH - 2);
+  doc.text('BEFORE PHOTO', margin + 3, y + imgBoxH - 2);
 
   // After Box
   doc.rect(margin + imgBoxW + 6, y, imgBoxW, imgBoxH, 'FD');
@@ -139,7 +139,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
     }
   }
   doc.setTextColor(255, 90, 31);
-  doc.text('T2: TARGET COMPARISON EPOCH', margin + imgBoxW + 9, y + imgBoxH - 2);
+  doc.text('AFTER PHOTO', margin + imgBoxW + 9, y + imgBoxH - 2);
 
   y += imgBoxH + 8;
 
@@ -147,7 +147,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   doc.setTextColor(236, 238, 241);
   doc.setFontSize(9);
   doc.setFont('courier', 'bold');
-  doc.text('CLASSIFIED SURFACE ANOMALIES', margin, y);
+  doc.text('CHANGED AREAS', margin, y);
   y += 4;
 
   doc.setFillColor(20, 26, 33);
@@ -155,10 +155,10 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   doc.setTextColor(138, 146, 157);
   doc.setFontSize(7);
   doc.text('ID', margin + 2, y + 4);
-  doc.text('CLASSIFICATION', margin + 14, y + 4);
+  doc.text('TYPE', margin + 14, y + 4);
   doc.text('LABEL', margin + 46, y + 4);
   doc.text('CONF', margin + 84, y + 4);
-  doc.text('DESCRIPTION & METRICS', margin + 104, y + 4);
+  doc.text('DESCRIPTION & SIZE', margin + 104, y + 4);
   y += 6;
 
   // Table Rows
@@ -174,7 +174,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
 
     const isHuman = r.classification === 'human-made';
     doc.setTextColor(isHuman ? 255 : 138, isHuman ? 90 : 146, isHuman ? 31 : 157);
-    doc.text((r.classification || 'UNKNOWN').toUpperCase(), margin + 14, y + 5);
+    doc.text(isHuman ? 'HUMAN' : 'NATURAL', margin + 14, y + 5);
 
     doc.setTextColor(236, 238, 241);
     doc.setFont('courier', 'normal');
@@ -197,7 +197,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
     doc.setTextColor(236, 238, 241);
     doc.setFont('courier', 'bold');
     doc.setFontSize(9);
-    doc.text('MISSION ANALYSIS BRIEFING', margin, y);
+    doc.text('SUMMARY', margin, y);
     y += 4;
 
     doc.setFillColor(14, 18, 23);
@@ -220,9 +220,9 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   doc.setTextColor(90, 98, 109);
   doc.setFontSize(6.5);
   doc.setFont('courier', 'normal');
-  doc.text('ORBITAL DELTA AUTONOMOUS PIPELINE // STRICTLY FOR RESEARCH & CIVIL OBSERVATION USE', margin, pageHeight - 6);
+  doc.text('ORBITAL DELTA - Hackathon prototype. AI results should be checked by a person.', margin, pageHeight - 6);
   doc.text('PAGE 01 / 01', pageWidth - margin - 18, pageHeight - 6);
 
-  const fileId = result.id || 'OD-SEC';
+  const fileId = result.id || 'OD';
   doc.save(`ORBITAL_DELTA_REPORT_${fileId}.pdf`);
 }

@@ -43,15 +43,15 @@ export function ResultsStage({
       <div className="w-full border-b border-line bg-[#0A0E13] px-4 py-2 flex flex-wrap items-center justify-between gap-3 font-mono text-[0.625rem]">
         <div className="flex items-center gap-2">
           <span className="px-2.5 py-0.5 uppercase tracking-wider text-text bg-panel border border-accent font-semibold">
-            RESULTS STATE
+            RESULTS
           </span>
           <span className="text-muted hidden sm:inline">
-            // TELEMETRY VECTOR AUDIT
+            // COMPARED SATELLITE PHOTOS
           </span>
         </div>
 
         <div className="text-muted tracking-widest hidden md:block">
-          TARGET: {result?.id || 'SECTOR_448B'} // PROJECTION EPSG:4326
+          AI CHANGE DETECTION REPORT
         </div>
       </div>
 

@@ -23,9 +23,9 @@ export function ComparisonViewer({
   const rafIdRef = useRef(null);
 
   const viewOptions = [
-    { id: 'slider', label: 'SLIDER' },
-    { id: 'side', label: 'SIDE BY SIDE' },
-    { id: 'overlay', label: 'OVERLAY' },
+    { id: 'slider', label: 'Slide' },
+    { id: 'side', label: 'Side by side' },
+    { id: 'overlay', label: 'Highlights' },
   ];
 
   // Draggable slider with RequestAnimationFrame
@@ -111,7 +111,7 @@ export function ComparisonViewer({
 
         {viewMode === 'overlay' && (
           <div className="flex items-center gap-2 font-mono text-[0.625rem] text-muted">
-            <span>OPACITY:</span>
+            <span>HIGHLIGHT STRENGTH:</span>
             <input
               type="range"
               min="0.1"
@@ -120,15 +120,15 @@ export function ComparisonViewer({
               value={overlayOpacity}
               onChange={(e) => setOverlayOpacity(parseFloat(e.target.value))}
               className="w-24 accent-accent cursor-pointer"
-              aria-label="Change detection mask opacity"
+              aria-label="Change highlight strength"
             />
             <span className="text-text font-bold">{Math.round(overlayOpacity * 100)}%</span>
           </div>
         )}
 
         <div className="flex items-center gap-3 font-mono text-[0.625rem] text-muted">
-          <span className="hidden sm:inline">PROJECTION: UTM ZONE 21S</span>
-          <span className="text-ok font-medium">● SYNCED</span>
+          <span className="hidden sm:inline">PHOTOS ALIGNED</span>
+          <span className="text-ok font-medium">● READY</span>
         </div>
       </div>
 
@@ -141,11 +141,11 @@ export function ComparisonViewer({
             <div className="relative w-full h-full overflow-hidden bg-bg">
               <img
                 src={beforeUrl}
-                alt="T1 Baseline Reference"
+                alt="Before photo"
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-text font-semibold">
-                T1: REFERENCE [BASELINE]
+                BEFORE
               </div>
             </div>
 
@@ -153,11 +153,11 @@ export function ComparisonViewer({
             <div className="relative w-full h-full overflow-hidden bg-bg">
               <img
                 src={afterUrl}
-                alt="T2 Target Evaluated"
+                alt="After photo"
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-accent font-semibold">
-                T2: ACQUIRED [TARGET]
+                AFTER
               </div>
 
               {/* Region boxes on T2 */}
@@ -185,12 +185,12 @@ export function ComparisonViewer({
             className={`relative w-full h-full overflow-hidden outline-none ${
               viewMode === 'slider' ? 'cursor-ew-resize' : 'cursor-default'
             }`}
-            aria-label="Dual-epoch raster comparison viewer. Use left and right arrow keys to move slider."
+            aria-label="Comparison viewer. Use left and right arrow keys to move slider."
           >
             {/* Base layer: T2 After Image */}
             <img
               src={afterUrl}
-              alt="T2 Target Evaluated"
+              alt="After photo"
               className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
             />
 
@@ -204,7 +204,7 @@ export function ComparisonViewer({
               >
                 <img
                   src={beforeUrl}
-                  alt="T1 Baseline Reference"
+                  alt="Before photo"
                   className="absolute inset-0 w-full h-full object-cover select-none max-w-none"
                 />
               </div>
@@ -214,7 +214,7 @@ export function ComparisonViewer({
             {viewMode === 'overlay' && overlayUrl && (
               <img
                 src={overlayUrl}
-                alt="Change Detection Mask Overlay"
+                alt="Change highlights"
                 style={{ opacity: overlayOpacity }}
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-100"
               />
@@ -255,12 +255,12 @@ export function ComparisonViewer({
               />
             ))}
 
-            {/* Epoch Badges in Canvas Corners */}
+            {/* Badges in Canvas Corners */}
             <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[0.625rem] text-text pointer-events-none z-20">
-              T1: REFERENCE [2024-03-12]
+              BEFORE
             </div>
             <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[0.625rem] text-accent pointer-events-none z-20">
-              T2: ACQUIRED [2025-03-10]
+              AFTER
             </div>
           </div>
         )}
@@ -271,14 +271,13 @@ export function ComparisonViewer({
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
             <div className="w-12 h-1 border-b-2 border-x border-text" />
-            <span>1 KM</span>
+            <span>1 KM SCALE</span>
           </div>
-          <span className="hidden sm:inline">DIM: 1024 × 768 PX</span>
         </div>
 
         <div className="flex items-center gap-2 text-accent font-semibold">
           <span className="w-1.5 h-1.5 bg-accent" />
-          <span>{regions.length} REGIONS DETECTED</span>
+          <span>{regions.length} CHANGES FOUND</span>
         </div>
       </div>
     </div>

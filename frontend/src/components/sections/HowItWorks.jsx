@@ -6,24 +6,24 @@ export function HowItWorks() {
   const steps = [
     {
       num: '01',
-      title: 'Upload Imagery',
+      title: 'Add two photos',
       icon: Layers,
       description:
-        'Ingest multi-spectral or optical raster frames from Copernicus, Landsat, or private commercial constellations across distinct temporal coordinates.',
+        'Upload a before photo and an after photo of the same place.',
     },
     {
       num: '02',
-      title: 'Detect Change',
+      title: 'AI finds the changes',
       icon: ScanLine,
       description:
-        'Orbital Delta aligns pixel geometry, normalizes atmospheric radiance, and isolates localized variance vectors using multi-modal convolutional networks.',
+        'We line up the photos and mark every area that looks different.',
     },
     {
       num: '03',
-      title: 'Read the Report',
+      title: 'Read the results',
       icon: FileText,
       description:
-        'Receive classified vectors (human-made infrastructure vs natural phenomena) with exact surface area in square kilometers and confidence calibration.',
+        'See what changed, how sure the AI is, and a short summary you can download.',
     },
   ];
 
@@ -31,9 +31,9 @@ export function HowItWorks() {
     <Section
       id="method"
       number="01"
-      category="METHOD"
+      category="HOW IT WORKS"
       title="Three steps. One report."
-      rightContent="PIPELINE LATENCY: DETERMINISTIC <10 SEC"
+      rightContent="RESULTS IN ABOUT 10 SECONDS"
     >
       <div className="grid grid-cols-1 md:grid-cols-3 border border-line divide-y md:divide-y-0 md:divide-x divide-line bg-panel">
         {steps.map((step) => {
@@ -61,7 +61,7 @@ export function HowItWorks() {
               </div>
 
               <div className="mt-8 pt-4 border-t border-line/60 font-mono text-[0.625rem] text-faint tracking-widest uppercase">
-                STAGE {step.num} // VERIFIED
+                STEP {step.num}
               </div>
             </div>
           );

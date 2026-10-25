@@ -8,7 +8,7 @@ export function MetricsRow({ result, className = '' }) {
     <div className={`grid grid-cols-3 divide-x divide-line border-b border-line bg-panel ${className}`}>
       <div className="p-3.5 flex flex-col">
         <span className="font-mono text-[0.625rem] text-muted uppercase tracking-wider">
-          CHANGED AREA
+          AREA CHANGED
         </span>
         <span className="font-mono text-lg md:text-xl text-accent font-semibold mt-1">
           {formatPercent(result.changed_area_percent)}
@@ -17,7 +17,7 @@ export function MetricsRow({ result, className = '' }) {
 
       <div className="p-3.5 flex flex-col">
         <span className="font-mono text-[0.625rem] text-muted uppercase tracking-wider">
-          REGIONS
+          CHANGES FOUND
         </span>
         <span className="font-mono text-lg md:text-xl text-text font-semibold mt-1">
           {(result.regions && result.regions.length) || 0}
@@ -26,7 +26,7 @@ export function MetricsRow({ result, className = '' }) {
 
       <div className="p-3.5 flex flex-col">
         <span className="font-mono text-[0.625rem] text-muted uppercase tracking-wider">
-          CONFIDENCE
+          HOW SURE THE AI IS
         </span>
         <span className="font-mono text-lg md:text-xl text-ok font-semibold mt-1">
           {formatConfidence(result.avg_confidence)}

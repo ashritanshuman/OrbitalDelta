@@ -43,7 +43,7 @@ export function RegionRow({
         </div>
 
         <span className="font-mono text-[0.625rem] text-ok font-semibold">
-          {formatConfidence(region.confidence)} CONF
+          {formatConfidence(region.confidence)} SURE
         </span>
       </div>
 
@@ -60,9 +60,9 @@ export function RegionRow({
 
       {/* Bottom Telemetry Metrics */}
       <div className="font-mono text-[0.5625rem] md:text-[0.625rem] text-muted flex items-center justify-between pt-1 border-t border-line/40">
-        <span>EST AREA: {((region.bbox?.w * region.bbox?.h * 32.5) || 2.4).toFixed(2)} KM²</span>
+        <span>AREA: {((region.bbox?.w * region.bbox?.h * 32.5) || 2.4).toFixed(2)} KM²</span>
         <span className="text-faint uppercase">
-          {isHuman ? 'ANTHROPIC VECTOR' : 'NATURAL SHIFT'}
+          {isHuman ? 'HUMAN ACTIVITY' : 'NATURAL CHANGE'}
         </span>
       </div>
     </div>

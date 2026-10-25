@@ -47,7 +47,7 @@ export function ReportPanel({
         icon={isExporting ? Loader2 : Download}
         className="w-full bg-[#13181F] border-line hover:border-accent"
       >
-        {isExporting ? 'GENERATING DOSSIER...' : 'DOWNLOAD REPORT (PDF)'}
+        {isExporting ? 'Creating report...' : 'Download report'}
       </ChamferButton>
 
       <div className="flex items-center justify-between px-1 font-mono text-[0.625rem] text-muted">
@@ -58,11 +58,11 @@ export function ReportPanel({
           className="inline-flex items-center gap-1 text-accent hover:underline uppercase cursor-pointer"
         >
           <RotateCcw strokeWidth={2} className="w-[0.6875rem] h-[0.6875rem]" />
-          NEW ANALYSIS →
+          Start over
         </button>
 
         <span className="text-faint">
-          CHECKSUM: {result?.id?.slice(-8) || '9E14-BF2'}
+          SUMMARY READY
         </span>
       </div>
     </div>

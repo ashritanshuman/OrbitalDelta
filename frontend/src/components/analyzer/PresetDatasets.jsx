@@ -1,6 +1,13 @@
 import React from 'react';
 import { Database, Loader2 } from 'lucide-react';
 
+const PRESET_DISPLAY_NAMES = {
+  deforestation: 'Forest cleared',
+  urban: 'New buildings',
+  coastal: 'Coastline change',
+  flood: 'Flooding',
+};
+
 export function PresetDatasets({
   presets = [],
   activePresetId = null,
@@ -19,17 +26,17 @@ export function PresetDatasets({
         <div>
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-text font-semibold uppercase tracking-wider">
-              PRESET BENCHMARK DATASETS
+              NO PHOTOS? TRY AN EXAMPLE
             </span>
             {presetLoading && (
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-accent/15 border border-accent/40 font-mono text-[0.5625rem] text-accent tracking-widest uppercase animate-pulse">
                 <Loader2 className="w-2.5 h-2.5 animate-spin" />
-                LOADING PAIR
+                LOADING
               </span>
             )}
           </div>
           <div className="font-mono text-[0.625rem] text-muted tracking-wide mt-0.5">
-            Authoritative dual-epoch satellite pairs loaded from local manifest:
+            Pick one to load example photos instantly:
           </div>
         </div>
       </div>
@@ -39,6 +46,7 @@ export function PresetDatasets({
         {presets.map((preset) => {
           const isActive = preset.id === activePresetId;
           const isLoadingThis = presetLoading && loadingPresetId === preset.id;
+          const label = PRESET_DISPLAY_NAMES[preset.id] || preset.label || preset.name;
 
           return (
             <button
@@ -61,7 +69,7 @@ export function PresetDatasets({
             >
               <span className="flex items-center gap-1.5">
                 {isLoadingThis && <Loader2 className="w-[0.6875rem] h-[0.6875rem] animate-spin text-accent" />}
-                <span>{preset.label || preset.name}</span>
+                <span>{label}</span>
               </span>
             </button>
           );

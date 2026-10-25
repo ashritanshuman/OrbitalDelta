@@ -1,25 +1,25 @@
 [
   {
     "id": "deforestation",
-    "label": "Deforestation",
+    "label": "Forest cleared",
     "before": "/samples/deforestation/before.jpg",
     "after": "/samples/deforestation/after.jpg"
   },
   {
     "id": "urban",
-    "label": "Urban construction",
+    "label": "New buildings",
     "before": "/samples/urban/before.jpg",
     "after": "/samples/urban/after.jpg"
   },
   {
     "id": "coastal",
-    "label": "Coastal erosion",
+    "label": "Coastline change",
     "before": "/samples/coastal/before.jpg",
     "after": "/samples/coastal/after.jpg"
   },
   {
     "id": "flood",
-    "label": "Flood damage",
+    "label": "Flooding",
     "before": "/samples/flood/before.jpg",
     "after": "/samples/flood/after.jpg"
   }

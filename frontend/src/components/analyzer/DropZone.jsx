@@ -33,13 +33,13 @@ export function DropZone({
 
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
-      {/* Header telemetry label */}
+      {/* Header label */}
       <div className="flex items-center justify-between font-mono text-[0.625rem] uppercase text-muted tracking-wider">
         <div className="flex items-center gap-1.5 font-semibold text-text">
-          <span className="text-accent">{channelLabel.split('/')[0]}</span>
-          <span>/{channelLabel.split('/')[1] || ''}</span>
+          <span className="text-accent">{channelLabel}</span>
+          <span className="text-muted text-[0.5625rem]">PHOTO</span>
         </div>
-        <span className="text-faint">{channelCode}</span>
+        {channelCode ? <span className="text-faint">{channelCode}</span> : null}
       </div>
 
       {/* Main dropzone box */}
@@ -62,7 +62,7 @@ export function DropZone({
           accept={accept}
           onChange={handleInputChange}
           className="hidden"
-          aria-label={`Upload image for ${channelLabel}`}
+          aria-label={`Upload photo for ${channelLabel}`}
         />
 
         {/* Corner Reticles */}
@@ -79,10 +79,10 @@ export function DropZone({
             </div>
 
             <span className="font-sans text-xs md:text-sm font-medium text-text group-hover:text-white transition-colors mb-1">
-              Drag raster capture or browse
+              Drag a photo here, or click to choose
             </span>
             <span className="font-mono text-[0.625rem] text-muted tracking-wider mb-3">
-              PNG, JPG up to 10MB
+              PNG or JPG, up to 10 MB
             </span>
 
             <button
@@ -93,7 +93,7 @@ export function DropZone({
               }}
               className="px-3 py-1.5 bg-panel hover:bg-panel-light border border-line hover:border-accent font-mono text-[0.625rem] text-accent uppercase tracking-widest transition-colors cursor-pointer"
             >
-              [BROWSE FILE]
+              Choose file
             </button>
           </div>
         ) : (
@@ -101,7 +101,7 @@ export function DropZone({
           <div className="w-full flex flex-col items-center">
             <div 
               onClick={handleClick}
-              title="Click to replace image"
+              title="Click to replace photo"
               className="relative w-full h-36 bg-panel border border-line hover:border-accent/80 cursor-pointer transition-colors overflow-hidden mb-3 group/preview"
             >
               <img
@@ -110,11 +110,11 @@ export function DropZone({
                 className="w-full h-full object-cover grayscale-[15%]"
               />
               <div className="absolute top-1.5 left-1.5 bg-[#07090C]/90 px-1.5 py-0.5 border border-line font-mono text-[0.5625rem] text-ok tracking-wider uppercase font-semibold">
-                INGESTED
+                Photo added
               </div>
               <div className="absolute inset-0 bg-[#07090C]/60 opacity-0 group-hover/preview:opacity-100 flex items-center justify-center transition-opacity">
                 <span className="font-mono text-[0.625rem] text-white bg-black/80 px-2 py-1 border border-line">
-                  CLICK TO REPLACE
+                  Click to replace
                 </span>
               </div>
               {file && (
@@ -125,8 +125,8 @@ export function DropZone({
             </div>
 
             <div className="w-full flex items-center justify-between font-mono text-[0.625rem] text-muted">
-              <span className="text-text font-medium truncate max-w-[9.375rem]" title={file ? file.name : 'PRESET_SAMPLE_RASTER.JPG'}>
-                {file ? file.name : 'PRESET_SAMPLE_RASTER.JPG'}
+              <span className="text-text font-medium truncate max-w-[9.375rem]" title={file ? file.name : 'example_photo.jpg'}>
+                {file ? file.name : 'example_photo.jpg'}
               </span>
 
               <div className="flex items-center gap-3">
@@ -138,7 +138,7 @@ export function DropZone({
                   }}
                   className="text-accent hover:underline font-mono text-[0.625rem] uppercase cursor-pointer"
                 >
-                  CHANGE
+                  Change
                 </button>
 
                 <button
@@ -150,7 +150,7 @@ export function DropZone({
                   className="inline-flex items-center gap-1 text-warn hover:underline font-mono text-[0.625rem] uppercase cursor-pointer"
                 >
                   <X strokeWidth={2} className="w-3 h-3" />
-                  REMOVE
+                  Remove
                 </button>
               </div>
             </div>

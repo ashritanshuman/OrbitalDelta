@@ -85,9 +85,9 @@ export async function analyzeImages(beforeFile, afterFile, activeSampleId = 'def
     return response.data;
   } catch (err) {
     if (err.name === 'AbortError' || err.code === 'ERR_CANCELED') {
-      throw new Error('Analysis was aborted by operator.');
+      throw new Error('Analysis was cancelled.');
     }
-    const detail = err.response?.data?.detail || err.message || 'Telemetry pipeline computation failed.';
+    const detail = err.response?.data?.detail || err.message || 'Could not complete analysis. Please try again.';
     throw new Error(detail);
   }
 }

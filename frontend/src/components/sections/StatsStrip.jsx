@@ -3,10 +3,10 @@ import MetricTile from '../ui/MetricTile';
 
 export function StatsStrip() {
   const stats = [
-    { value: '4', label: 'CHANGE CLASSES', color: 'text-text' },
-    { value: '<10 S', label: 'PER ANALYSIS', color: 'text-text' },
-    { value: '91%', label: 'AVG CONFIDENCE', color: 'text-accent' },
-    { value: 'PDF', label: 'REPORT EXPORT', color: 'text-text' },
+    { value: '8', label: 'TYPES OF CHANGE IT CAN NAME', color: 'text-text' },
+    { value: 'About 10 sec', label: 'TO GET RESULTS', color: 'text-text' },
+    { value: '2 photos', label: 'IS ALL YOU NEED', color: 'text-accent' },
+    { value: 'PDF', label: 'REPORT YOU CAN DOWNLOAD', color: 'text-text' },
   ];
 
   return (

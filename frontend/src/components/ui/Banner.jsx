@@ -18,7 +18,7 @@ export function Banner({
       <div className="flex items-center gap-3">
         <AlertTriangle strokeWidth={1.5} className="w-[1.125rem] h-[1.125rem] text-warn flex-shrink-0" />
         <div className="text-xs tracking-wider leading-relaxed">
-          <span className="font-bold uppercase mr-2">[PIPELINE EXCEPTION]:</span>
+          <span className="font-bold uppercase mr-2">Note:</span>
           <span>{message}</span>
         </div>
       </div>
@@ -31,7 +31,7 @@ export function Banner({
           icon={RefreshCw}
           className="self-end sm:self-auto border-warn text-warn hover:bg-warn hover:text-bg"
         >
-          RETRY
+          Try again
         </ChamferButton>
       )}
     </div>

@@ -6,10 +6,10 @@ import { AUTO_RUN_PRESETS } from '../config/constants';
 import { MOCK_SAMPLES } from '../api/mock';
 
 export const PROCESSING_STEPS = [
-  { id: '01', title: 'Aligning images', detail: 'Geometric registration & sub-pixel orthorectification' },
-  { id: '02', title: 'Computing difference', detail: 'Radiometric normalization & multi-band delta extraction' },
-  { id: '03', title: 'Identifying regions', detail: 'Contour clustering & vector polygon extraction' },
-  { id: '04', title: 'Generating report', detail: 'Compiling statistical summary & classification breakdown' },
+  { id: '01', title: 'Matching the two photos', detail: 'Lining up the two images so they overlap perfectly' },
+  { id: '02', title: 'Looking for differences', detail: 'Comparing colors and patterns across the area' },
+  { id: '03', title: 'Marking changed areas', detail: 'Outlining spots where ground or water changed' },
+  { id: '04', title: 'Writing the summary', detail: 'Counting changed areas and writing a short report' },
 ];
 
 export function useAnalysis() {
@@ -117,7 +117,7 @@ export function useAnalysis() {
     const file2 = aFile || rawT2Drop.file;
 
     if (!file1 || !file2) {
-      setError('Both T1 and T2 orbital rasters must be supplied to execute analysis.');
+      setError('Please add both a before photo and an after photo to compare.');
       setState('error');
       return;
     }
@@ -189,7 +189,7 @@ export function useAnalysis() {
         // Aborted cleanly by operator / new preset selection
         return;
       }
-      setError(err.message || 'Telemetry pipeline computation failed. Check network or server status.');
+      setError('Something went wrong while comparing the photos. Please try again.');
       setState('error');
     }
   }, [rawT1Drop.file, rawT2Drop.file, activePresetId]);
@@ -263,7 +263,7 @@ export function useAnalysis() {
       rawT1Drop.removeFile();
       rawT2Drop.removeFile();
       setState('idle');
-      setPresetError(`Preset images not found: ${presetId}`);
+      setPresetError('Could not load example photos. Please try again.');
     }
   }, [presets, rawT1Drop, rawT2Drop, startAnalysis]);
 

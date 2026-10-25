@@ -29,11 +29,11 @@ export function ClosingCta() {
       {/* Centered CTA Architecture Container */}
       <div className="relative z-10 max-w-2xl mx-auto px-4 md:px-8 text-center flex flex-col items-center">
         <div className="font-mono text-[0.625rem] md:text-[0.6875rem] uppercase tracking-widest text-accent mb-4 font-semibold">
-          MISSION CONSOLE // LIVE DEMONSTRATION READY
+          TEST IT YOURSELF
         </div>
 
         <h2 className="text-2xl sm:text-4xl text-text tracking-wide uppercase mb-8 leading-tight font-display">
-          Start your first analysis.
+          Try it with your own photos.
         </h2>
 
         <ChamferButton
@@ -42,11 +42,11 @@ export function ClosingCta() {
           onClick={scrollToAnalyzer}
           className="mb-8"
         >
-          LAUNCH ANALYZER
+          Start
         </ChamferButton>
 
         <div className="font-mono text-[0.625rem] md:text-[0.6875rem] text-muted tracking-widest uppercase">
-          LAT 00°00'00&quot; / LON 00°00'00&quot; [REFERENCE GROUND ZERO]
+          FREE TO TEST IN YOUR BROWSER
         </div>
       </div>
     </section>

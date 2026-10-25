@@ -69,17 +69,17 @@ export function Analyzer({ analysisHook }) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
           <div>
             <span className="font-mono text-[0.6875rem] tracking-widest text-muted uppercase block mb-1">
-              02 / ANALYZER
+              02 / TRY IT
             </span>
             <h2 className="text-xl sm:text-2xl text-text font-display uppercase tracking-wide">
-              Operational Raster Matrix
+              Compare two satellite photos
             </h2>
           </div>
 
           <div className="flex items-center gap-3 mt-3 sm:mt-0 font-mono text-[0.625rem] text-muted">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-panel border border-line">
               <span className="w-1.5 h-1.5 bg-ok" />
-              <span>PIPELINE ONLINE</span>
+              <span>ONLINE</span>
             </div>
           </div>
         </div>
@@ -153,11 +153,11 @@ export function Analyzer({ analysisHook }) {
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#07090C]/95 border-t border-line p-3 flex items-center justify-between backdrop-blur-md">
           <div className="font-mono text-[0.625rem] text-muted">
             {state === 'results' ? (
-              <span className="text-ok font-semibold">ANALYSIS COMPLETE</span>
+              <span className="text-ok font-semibold">DONE</span>
             ) : hasBothImages ? (
-              <span className="text-text">READY TO EXECUTE</span>
+              <span className="text-text">READY</span>
             ) : (
-              <span>UPLOAD T1 & T2</span>
+              <span>ADD BOTH PHOTOS</span>
             )}
           </div>
 
@@ -167,7 +167,7 @@ export function Analyzer({ analysisHook }) {
               variant="secondary"
               onClick={handleReset}
             >
-              RESET
+              Start over
             </ChamferButton>
           ) : (
             <ChamferButton
@@ -177,7 +177,7 @@ export function Analyzer({ analysisHook }) {
               onClick={handleRun}
               icon={Play}
             >
-              RUN ANALYSIS
+              Find changes
             </ChamferButton>
           )}
         </div>

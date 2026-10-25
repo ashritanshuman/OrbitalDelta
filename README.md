@@ -2,7 +2,7 @@
 ### Track 05: SpaceTech & Satellite Intelligence // 3-Hour Hackathon
 
 > **"See what changed on Earth."**  
-> High-cadence AI satellite change detection platform for dual-epoch surface analysis, sub-pixel telemetry discrimination, and instant mission reports. Built for an 8GB CPU-only Ubuntu environment.
+> Upload two satellite photos of the same place, taken at different times. Our AI finds what changed and explains it in simple words. Built for an 8GB CPU-only Ubuntu environment.
 
 ---
 

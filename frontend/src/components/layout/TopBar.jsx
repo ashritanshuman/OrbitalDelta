@@ -39,9 +39,6 @@ export function TopBar() {
           >
             ORBITAL DELTA
           </a>
-          <span className="font-mono text-[0.625rem] text-muted px-1.5 py-0.5 bg-panel border border-line hidden sm:inline-block tracking-wider">
-            ORB-SYS 4.2
-          </span>
         </div>
 
         {/* Anchor Nav Links */}
@@ -51,21 +48,21 @@ export function TopBar() {
             onClick={scrollTo('analyzer')}
             className="text-muted hover:text-text transition-colors py-1 border-b border-transparent hover:border-accent"
           >
-            ANALYZER
+            Try it
           </a>
           <a
             href="#method"
             onClick={scrollTo('method')}
             className="text-muted hover:text-text transition-colors py-1 border-b border-transparent hover:border-text"
           >
-            METHOD
+            How it works
           </a>
           <a
             href="#applications"
             onClick={scrollTo('applications')}
             className="text-muted hover:text-text transition-colors py-1 border-b border-transparent hover:border-text"
           >
-            APPLICATIONS
+            Uses
           </a>
         </nav>
 
@@ -73,7 +70,7 @@ export function TopBar() {
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-panel border border-line font-mono text-[0.625rem] text-muted tracking-widest uppercase">
             <StatusDot status="ok" pulse />
-            <span>SYSTEM NOMINAL</span>
+            <span>Ready</span>
           </div>
 
           <ChamferButton
@@ -82,7 +79,7 @@ export function TopBar() {
             onClick={scrollTo('analyzer')}
             className="border-accent hover:bg-accent"
           >
-            LAUNCH ANALYZER
+            Start
           </ChamferButton>
         </div>
       </div>

@@ -21,22 +21,22 @@ export function UploadStage({
       {/* Telemetry Header Strip */}
       <div className="px-4 py-2 bg-[#0A0E13] border-b border-line flex flex-wrap items-center justify-between gap-y-2 text-muted font-mono text-[0.625rem]">
         <div className="flex items-center gap-3">
-          <span className="text-accent font-semibold">GRID REF:</span>
-          <span className="text-text">LAT 08°45'12.4"S / LON 063°54'02.1"W</span>
+          <span className="text-accent font-semibold">STEP:</span>
+          <span className="text-text">1 OF 2 // ADD PHOTOS</span>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <span className="text-accent">CRS:</span>
-            <span className="text-text">EPSG:4326</span>
+            <span className="text-accent">FORMAT:</span>
+            <span className="text-text">PNG OR JPG</span>
           </div>
           <span className="text-line">|</span>
           <div className="flex items-center gap-2">
-            <span className="text-accent">GSD:</span>
-            <span className="text-text">10M/PX</span>
+            <span className="text-accent">LIMIT:</span>
+            <span className="text-text">10 MB EACH</span>
           </div>
           <span className="text-line hidden sm:inline">|</span>
           <div className="hidden sm:flex items-center gap-2 text-ok">
-            <span>● CALIBRATED</span>
+            <span>● READY</span>
           </div>
         </div>
       </div>
@@ -47,22 +47,22 @@ export function UploadStage({
           <div className="flex items-center gap-2 mb-1 justify-center sm:justify-start">
             <span className="w-1.5 h-1.5 bg-accent" />
             <span className="font-mono text-[0.625rem] uppercase tracking-widest text-accent font-semibold">
-              INGESTION MODULE
+              STEP 1: ADD YOUR PHOTOS
             </span>
           </div>
           <h3 className="text-lg md:text-xl text-text font-display uppercase tracking-wide">
-            Supply dual-epoch rasters
+            Add a before photo and an after photo
           </h3>
           <p className="font-sans text-xs md:text-sm text-muted mt-1">
-            Provide baseline (T1) and comparison (T2) orbital captures for automated geometric alignment, radiometric normalization, and delta discrimination.
+            Use two satellite photos of the same place, taken at different times. The AI will compare them and mark what changed.
           </p>
         </div>
 
         {/* Dual Dropzones */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <DropZone
-            channelLabel="T1 / BEFORE (REFERENCE)"
-            channelCode="[CH-01: REF]"
+            channelLabel="BEFORE"
+            channelCode=""
             file={t1Drop.file}
             previewUrl={t1Drop.previewUrl}
             error={t1Drop.error}
@@ -73,8 +73,8 @@ export function UploadStage({
           />
 
           <DropZone
-            channelLabel="T2 / AFTER (TARGET)"
-            channelCode="[CH-02: EVAL]"
+            channelLabel="AFTER"
+            channelCode=""
             file={t2Drop.file}
             previewUrl={t2Drop.previewUrl}
             error={t2Drop.error}
@@ -98,7 +98,7 @@ export function UploadStage({
         {/* Run Analysis Action Button */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
           <div className="font-mono text-[0.625rem] text-faint uppercase tracking-wider text-center sm:text-left">
-            STATUS: {canRun ? 'DUAL RASTERS READY FOR PROCESSING' : 'AWAITING BOTH EPOCH CAPTURES'}
+            STATUS: {canRun ? 'BOTH PHOTOS READY TO COMPARE' : 'WAITING FOR BOTH PHOTOS'}
           </div>
 
           <ChamferButton
@@ -110,14 +110,14 @@ export function UploadStage({
             icon={Play}
             className="w-full sm:w-auto"
           >
-            RUN ANALYSIS
+            Find changes
           </ChamferButton>
         </div>
       </div>
 
       {/* Footer Ingest Note */}
       <div className="font-mono text-[0.625rem] text-faint text-center py-4 border-t border-line bg-[#0A0E13]">
-        SECURE ORBITAL INGEST ENCRYPTION: AES-256-GCM // MAX RASTER CAPACITY 10MB
+        Your photos stay private in your browser session.
       </div>
     </div>
   );

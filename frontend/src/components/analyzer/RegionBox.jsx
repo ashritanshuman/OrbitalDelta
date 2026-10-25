@@ -49,7 +49,7 @@ export function RegionBox({
             : 'bg-[#181C21] text-text border border-line'
         }`}
       >
-        [{region.id}: {region.label || region.classification.toUpperCase()}]
+        [{region.id}: {region.label || (isHuman ? 'HUMAN' : 'NATURAL')}]
       </div>
     </div>
   );

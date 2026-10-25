@@ -11,7 +11,7 @@ export function Chip({ classification = 'human-made', label, className = '' }) {
     <span
       className={`inline-flex items-center px-1.5 py-0.5 border font-mono text-[0.5625rem] md:text-[0.625rem] font-semibold tracking-wider uppercase select-none ${styles} ${className}`}
     >
-      {label || (isHuman ? 'HUMAN-MADE' : 'NATURAL')}
+      {label || (isHuman ? 'Human activity' : 'Natural')}
     </span>
   );
 }
