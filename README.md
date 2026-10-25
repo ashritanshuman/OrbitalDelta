@@ -1,5 +1,5 @@
 # 🛰️ ORBITAL DELTA // Satellite Change Detection Platform
-### Track 05: SpaceTech & Satellite Intelligence // 3-Hour Hackathon
+### Track 05: SpaceTech & Satellite Intelligence // ORCATHON Hackathon
 
 > **"See what changed on Earth."**  
 > Upload two satellite photos of the same place, taken at different times. Our AI finds what changed and explains it in simple words. Built for an 8GB CPU-only Ubuntu environment.
