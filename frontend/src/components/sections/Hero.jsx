@@ -11,7 +11,10 @@ export function Hero({ onLoadSampleAndScroll }) {
   };
 
   return (
-    <section className="relative w-full border-b border-[#232A33] bg-[#07090C] text-[#ECEEF1] overflow-hidden min-h-[40rem] md:min-h-[45rem] flex flex-col justify-between pt-20">
+    <section
+      id="hero"
+      className="hero relative w-full border-b border-[#232A33] bg-[#07090C] text-[#ECEEF1] overflow-hidden flex flex-col justify-between pt-16"
+    >
       {/* Background Satellite Photography with Scrim */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
         <img
@@ -39,10 +42,10 @@ export function Hero({ onLoadSampleAndScroll }) {
       </div>
 
       {/* Hero Content Body */}
-      <div className="relative z-10 max-w-[76rem] mx-auto w-full px-4 md:px-8 pt-12 md:pt-20 pb-12 flex flex-col justify-between flex-1">
-        <div className="max-w-3xl flex flex-col">
+      <div className="relative z-10 max-w-[76rem] mx-auto w-full px-4 md:px-8 py-4 sm:py-6 lg:py-8 flex flex-col justify-between flex-1 overflow-hidden">
+        <div className="max-w-3xl flex flex-col my-auto">
           {/* Telemetry Sensor Tag */}
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4 lg:mb-5">
             <span className="w-1.5 h-1.5 bg-accent" />
             <span className="font-mono text-[0.625rem] md:text-[0.6875rem] uppercase tracking-widest text-accent font-semibold">
               SATELLITE CHANGE FINDER
@@ -51,14 +54,14 @@ export function Hero({ onLoadSampleAndScroll }) {
 
           {/* Main Headline */}
           <h1
-            className="text-3xl sm:text-5xl lg:text-6xl text-[#ECEEF1] tracking-tight leading-[1.12] mb-6 font-display"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-[#ECEEF1] tracking-tight leading-[1.1] mb-3 sm:mb-4 lg:mb-5 font-display"
           >
             See what <span className="text-accent">changed</span> <br />
             on Earth.
           </h1>
 
           {/* Technical Subtext */}
-          <p className="font-sans text-base sm:text-lg text-[#8A929D] max-w-xl font-normal leading-relaxed mb-8">
+          <p className="font-sans text-sm sm:text-base lg:text-lg text-[#8A929D] max-w-xl font-normal leading-relaxed mb-5 sm:mb-6 lg:mb-7">
             Upload two satellite photos of the same place, taken at different times. Our AI finds what changed and explains it in simple words.
           </p>
 
@@ -91,15 +94,15 @@ export function Hero({ onLoadSampleAndScroll }) {
         </div>
 
         {/* Telemetry Footer Box */}
-        <div className="mt-16 w-full flex flex-col lg:flex-row items-start lg:items-end justify-end gap-4">
+        <div className="mt-auto w-full flex flex-col lg:flex-row items-start lg:items-end justify-end gap-3 pt-3">
           {/* Corner Ticked Metric Box */}
-          <div className="relative bg-[#0E1217]/90 border border-[#232A33] px-4 py-2.5 flex items-center">
+          <div className="relative bg-[#0E1217]/90 border border-[#232A33] px-3.5 sm:px-4 py-2 sm:py-2.5 flex items-center">
             <span className="absolute -top-[0.3125rem] -left-[0.3125rem] text-[#5A626D] font-mono text-[0.625rem] leading-none select-none">+</span>
             <span className="absolute -top-[0.3125rem] -right-[0.3125rem] text-[#5A626D] font-mono text-[0.625rem] leading-none select-none">+</span>
             <span className="absolute -bottom-[0.3125rem] -left-[0.3125rem] text-[#5A626D] font-mono text-[0.625rem] leading-none select-none">+</span>
             <span className="absolute -bottom-[0.3125rem] -right-[0.3125rem] text-[#5A626D] font-mono text-[0.625rem] leading-none select-none">+</span>
 
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[0.625rem] md:text-[0.6875rem] text-[#ECEEF1] tracking-widest">
+            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-1 font-mono text-[0.625rem] md:text-[0.6875rem] text-[#ECEEF1] tracking-widest">
               <div>Works with any satellite photo</div>
               <div className="hidden sm:inline text-[#232A33]">/</div>
               <div>No special hardware</div>
