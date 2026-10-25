@@ -1,0 +1,190 @@
+# Task: Prepare, Audit, and Push the Complete Project to GitHub
+
+**GitHub Repository:** https://github.com/ashritanshuman/OrbitalDelta.git
+
+The GitHub repository already exists and is currently empty. Your task is to inspect the entire local project, prepare it for version control, maintain a proper `.gitignore`, and push all required project files to the repository.
+
+## 1. Inspect the Existing Project
+
+Before making any changes:
+
+- Analyze the complete project directory and understand its structure.
+- Identify the technology stack, frameworks, dependencies, source code, configuration files, assets, documentation, and build tools.
+- Identify the actual project root directory.
+- Check whether Git is already initialized and inspect the current branch, remotes, staged changes, and working-tree status.
+- Identify any existing `.gitignore`, `README.md`, dependency manifests, environment files, and lockfiles.
+- Check for nested Git repositories, submodules, and existing Git history before proceeding.
+
+**Important:** Do not assume that the project is a particular type of application. Determine its architecture from the actual files.
+
+## 2. Audit and Maintain `.gitignore`
+
+Create or update the `.gitignore` file at the project root based on the actual technology stack.
+
+The file must exclude unnecessary, generated, sensitive, and machine-specific files, including applicable items such as:
+
+- Dependency directories: `node_modules/`, virtual environments, and package caches.
+- Build output: `dist/`, `build/`, `.next/`, coverage reports, and other generated artifacts.
+- Environment secrets: `.env`, `.env.local`, `.env.production`, and other files containing private credentials.
+- Operating-system files: `.DS_Store`, `Thumbs.db`, and similar files.
+- Editor and IDE artifacts: `.vscode/`, `.idea/`, temporary files, and personal workspace settings, where appropriate.
+- Logs, temporary files, caches, and generated test results.
+- Python cache files, compiled files, and virtual environments if the project uses Python.
+- Framework-specific generated files and local database files when applicable.
+
+### `.gitignore` requirements
+
+- Do not blindly copy a generic `.gitignore`; tailor it to the detected stack.
+- Preserve existing valid ignore rules unless there is a clear reason to change them.
+- Do not ignore source code, required assets, configuration templates, documentation, or dependency lockfiles.
+- Keep essential files such as `package.json`, `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `requirements.txt`, `pyproject.toml`, and other relevant manifests tracked when applicable.
+- Do not ignore an entire directory if it contains files required to build or run the application.
+- If a required file is currently ignored, correct the rule instead of automatically force-adding everything.
+- Ensure `.env.example` or an equivalent template is tracked when appropriate, with placeholder values only.
+- Check already tracked files because adding a rule to `.gitignore` does not remove files already in Git's index.
+
+## 3. Security and Sensitive-File Audit
+
+Before staging anything, inspect the project for:
+
+- API keys, access tokens, passwords, private keys, service-account credentials, and database connection strings.
+- Firebase service-account private keys or other cloud credentials.
+- Real production environment files and secrets embedded in source code or configuration.
+- Personal information, local absolute paths, and sensitive database dumps.
+- Large generated files, unnecessary binaries, and accidental dependency folders.
+
+Never commit credentials or private environment files.
+
+If a secret is discovered:
+
+1. Do not stage or push it.
+2. Identify the affected file and explain the issue.
+3. Replace exposed values with safe placeholders where appropriate.
+4. If the secret was already committed, do not assume that deleting the file or adding it to `.gitignore` removes it from Git history. Explain the required remediation, including credential rotation when necessary.
+5. Never print secret values in the terminal output, logs, or final report.
+
+Do not delete useful project files merely to make the repository smaller. Ask for confirmation before destructive changes or removing important data.
+
+## 4. Prepare the Repository for GitHub
+
+Initialize Git only if it is not already initialized.
+
+Configure the remote repository as:
+
+`https://github.com/ashritanshuman/OrbitalDelta.git`
+
+Before adding or changing the remote:
+
+- Inspect existing remotes.
+- If `origin` already points to the correct repository, retain it.
+- If it points elsewhere, report the situation and make the necessary change only after ensuring that no existing work or remote configuration will be lost.
+- Preserve existing branches, commits, and uncommitted work.
+- Do not overwrite or discard any existing history.
+
+Use the repository's existing default branch when appropriate. If this is a genuinely new, uninitialized project with no existing branch convention, use `main`.
+
+## 5. Stage All Required Project Files
+
+Stage all files that belong in the repository, including:
+
+- Application source code.
+- Components, pages, modules, utilities, and backend code.
+- Required images, icons, fonts, static assets, and other project resources.
+- Configuration files and dependency manifests.
+- Required SQL scripts, database schemas, migrations, and seed files.
+- Tests, scripts, and development tooling.
+- Documentation and setup instructions.
+- The root `.gitignore` and `.env.example`, where applicable.
+
+Exclude generated dependencies, secrets, caches, build artifacts, personal files, and other unnecessary content.
+
+Do not use `git add -f .` or other blanket force-add commands to bypass ignore rules.
+
+Before committing, inspect the staged changes using:
+
+- `git status`
+- `git diff --cached --stat`
+- `git diff --cached --check`
+- `git diff --cached`
+
+Review the staged file list and check for accidentally included secrets, large files, or irrelevant directories. Avoid displaying secret values during this audit.
+
+## 6. Create or Update `README.md`
+
+If the project does not have a useful README, create one based on the actual implementation. If one exists, update it without removing useful information.
+
+Include, where applicable:
+
+- Project name and purpose.
+- Key features.
+- Technology stack.
+- Project structure.
+- Prerequisites.
+- Installation and setup instructions.
+- Environment-variable configuration using placeholder values.
+- Database setup and migration instructions.
+- Development and production commands.
+- Testing and build commands.
+- Deployment instructions, if known.
+- Relevant usage examples.
+
+Do not invent features, commands, API endpoints, or configuration values. Verify instructions against the actual project files.
+
+## 7. Commit and Push the Project
+
+After the audit is complete:
+
+1. Confirm the staged changes contain all required project files.
+2. Verify that no credentials or prohibited files are included.
+3. Confirm the repository remote and target branch.
+4. Create a descriptive initial commit if the project has no existing commit history. Otherwise, create an appropriate commit that preserves the existing history.
+5. Push the intended branch to the GitHub repository.
+6. If authentication is required, use the configured Git credential manager, SSH authentication, or another secure authentication method. Never embed a GitHub token directly in the remote URL or source code.
+7. If the push fails because of authentication, network issues, branch protection, or remote history conflicts, diagnose the problem and report it. Do not force-push or overwrite remote history to bypass the error.
+
+Use a clear commit message, such as:
+
+`Initial commit: Add complete project source and configuration`
+
+Adapt the message if the repository already contains commits.
+
+## 8. Verify the Final Result
+
+After pushing:
+
+- Verify that the push completed successfully.
+- Confirm the intended branch and remote.
+- Check that all expected files are committed.
+- Confirm that `.gitignore` is present and correctly configured.
+- Verify that environment secrets and generated dependency directories are not tracked.
+- Run the project's available lint, test, or build commands when practical.
+- Report any checks that could not be completed and why.
+
+Do not claim that files were pushed unless the push actually succeeded.
+
+## 9. Final Report
+
+Provide a concise but complete summary containing:
+
+1. Repository URL and branch.
+2. Whether Git was initialized or an existing repository was reused.
+3. Number of files committed, if verifiable.
+4. Major project directories and files included.
+5. `.gitignore` rules created or updated.
+6. Security issues found and how they were handled, without exposing secrets.
+7. README changes.
+8. Tests or build checks performed and their results.
+9. Commit hash and push status.
+10. Any remaining issues or manual actions required.
+
+## Execution Rules
+
+- Work directly in the existing local project directory.
+- Perform the complete workflow rather than merely providing instructions.
+- Inspect before modifying, stage selectively, audit before committing, and verify after pushing.
+- Preserve all valid source files and existing work.
+- Never commit secrets, blindly force-add ignored files, delete important data, or force-push over existing history.
+- Do not stop after creating `.gitignore` or initializing Git. Complete the commit and push when the environment permits.
+- If an action requires my authorization, credentials, or a decision that cannot safely be inferred, ask only for the necessary input.
+
+**Final objective:** Publish a complete, clean, secure, reproducible, and professionally organized version of the existing local project to `https://github.com/ashritanshuman/OrbitalDelta.git`, with all required files tracked and a maintainable `.gitignore`.

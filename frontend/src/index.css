@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: #07090C;
+    color: #ECEEF1;
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #07090C;
+    overflow-x: hidden;
+  }
+
+  *:focus-visible {
+    outline: 1px solid #FF5A1F;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Chamfer cut: top-right and bottom-left clipped */
+  .chamfer-cut {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+
+  .chamfer-cut-lg {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  /* Photo bottom fade to background */
+  .photo-scrim-bottom {
+    mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  }
+
+  /* Section label typography */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8A929D;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,101 @@
+import React, { useCallback } from 'react';
+import ComparisonViewer from './ComparisonViewer';
+import MetricsRow from './MetricsRow';
+import RegionList from './RegionList';
+import ReportPanel from './ReportPanel';
+
+export function ResultsStage({
+  result,
+  beforeUrl,
+  afterUrl,
+  viewMode,
+  setViewMode,
+  sliderPosition,
+  setSliderPosition,
+  overlayOpacity,
+  setOverlayOpacity,
+  hoveredRegionId,
+  setHoveredRegionId,
+  selectedRegionId,
+  setSelectedRegionId,
+  onReset,
+}) {
+  const handleSelectRegion = useCallback(
+    (id) => {
+      setSelectedRegionId((prev) => (prev === id ? null : id));
+      const rowEl = document.getElementById(`region-row-${id}`);
+      if (rowEl) {
+        rowEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    },
+    [setSelectedRegionId]
+  );
+
+  return (
+    <div className="w-full flex flex-col">
+      {/* Top Controller Header Strip */}
+      <div className="w-full border-b border-line bg-[#0A0E13] px-4 py-2 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px]">
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-0.5 uppercase tracking-wider text-text bg-panel border border-accent font-semibold">
+            RESULTS STATE
+          </span>
+          <span className="text-muted hidden sm:inline">
+            // TELEMETRY VECTOR AUDIT
+          </span>
+        </div>
+
+        <div className="text-muted tracking-widest hidden md:block">
+          TARGET: {result?.id || 'SECTOR_448B'} // PROJECTION EPSG:4326
+        </div>
+      </div>
+
+      {/* 65 / 35 Split Layout */}
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+        {/* Left Column: Interactive Raster Viewer (65% -> col-span-8) */}
+        <div className="lg:col-span-8 flex flex-col border-b lg:border-b-0 lg:border-r border-line relative">
+          <ComparisonViewer
+            beforeUrl={beforeUrl}
+            afterUrl={afterUrl}
+            overlayUrl={result?.overlay_url}
+            regions={result?.regions || []}
+            viewMode={viewMode}
+            setViewMode={setViewMode}
+            sliderPosition={sliderPosition}
+            setSliderPosition={setSliderPosition}
+            overlayOpacity={overlayOpacity}
+            setOverlayOpacity={setOverlayOpacity}
+            hoveredRegionId={hoveredRegionId}
+            selectedRegionId={selectedRegionId}
+            onHoverRegion={setHoveredRegionId}
+            onSelectRegion={handleSelectRegion}
+          />
+        </div>
+
+        {/* Right Column: Inspector & Classification Stream (35% -> col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col justify-between bg-panel">
+          <div>
+            <MetricsRow result={result} />
+            <div className="p-4">
+              <RegionList
+                regions={result?.regions || []}
+                hoveredRegionId={hoveredRegionId}
+                selectedRegionId={selectedRegionId}
+                onHoverRegion={setHoveredRegionId}
+                onSelectRegion={handleSelectRegion}
+              />
+            </div>
+          </div>
+
+          <ReportPanel
+            result={result}
+            beforeUrl={beforeUrl}
+            afterUrl={afterUrl}
+            onReset={onReset}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ResultsStage;

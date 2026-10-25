@@ -1,0 +1,182 @@
+import React, { useEffect } from 'react';
+import { useFileDrop } from '../../hooks/useFileDrop';
+import Panel from '../ui/Panel';
+import Banner from '../ui/Banner';
+import UploadStage from './UploadStage';
+import ProcessingStage from './ProcessingStage';
+import ResultsStage from './ResultsStage';
+import ChamferButton from '../ui/ChamferButton';
+import { Play } from 'lucide-react';
+
+export function Analyzer({ analysisHook }) {
+  const {
+    state,
+    setState,
+    result,
+    error,
+    samples,
+    activeSampleId,
+    setActiveSampleId,
+    viewMode,
+    setViewMode,
+    sliderPosition,
+    setSliderPosition,
+    overlayOpacity,
+    setOverlayOpacity,
+    hoveredRegionId,
+    setHoveredRegionId,
+    selectedRegionId,
+    setSelectedRegionId,
+    processingProgress,
+    activeStepIndex,
+    startAnalysis,
+    cancelAnalysis,
+    resetAnalysis,
+  } = analysisHook;
+
+  // Initialize dropzones (ready for user upload or preset selection)
+  const t1Drop = useFileDrop(null);
+  const t2Drop = useFileDrop(null);
+
+  // Handle preset sample selection
+  const handleSelectSample = (sample) => {
+    setActiveSampleId(sample.id);
+    t1Drop.setExplicitUrl(sample.before);
+    t2Drop.setExplicitUrl(sample.after);
+    if (state === 'error') {
+      setState('ready');
+    }
+  };
+
+  // State transitions: when both drops have a file or url, state is 'ready' (unless processing/results)
+  const hasBothImages = Boolean(t1Drop.previewUrl && t2Drop.previewUrl);
+
+  useEffect(() => {
+    if (state === 'idle' && hasBothImages) {
+      setState('ready');
+    } else if (state === 'ready' && !hasBothImages) {
+      setState('idle');
+    }
+  }, [hasBothImages, state, setState]);
+
+  const handleRun = () => {
+    if (!hasBothImages) return;
+    startAnalysis(
+      t1Drop.file,
+      t2Drop.file,
+      t1Drop.previewUrl,
+      t2Drop.previewUrl
+    );
+  };
+
+  const handleReset = () => {
+    resetAnalysis();
+  };
+
+  return (
+    <section id="analyzer" className="w-full py-16 md:py-24 bg-bg border-b border-line">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
+          <div>
+            <span className="font-mono text-[11px] tracking-widest text-muted uppercase block mb-1">
+              02 / ANALYZER
+            </span>
+            <h2 className="text-xl sm:text-2xl text-text font-display uppercase tracking-wide">
+              Operational Raster Matrix
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-3 mt-3 sm:mt-0 font-mono text-[10px] text-muted">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-panel border border-line">
+              <span className="w-1.5 h-1.5 bg-ok" />
+              <span>PIPELINE ONLINE</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Error Banner */}
+        {state === 'error' && error && (
+          <div className="mb-6">
+            <Banner message={error} onRetry={handleRun} />
+          </div>
+        )}
+
+        {/* Main Panel with Mechanical Corner Ticks */}
+        <Panel noPadding cornerTicks className="overflow-hidden">
+          {state === 'processing' ? (
+            <ProcessingStage
+              progress={processingProgress}
+              activeStepIndex={activeStepIndex}
+              onCancel={cancelAnalysis}
+            />
+          ) : state === 'results' && result ? (
+            <ResultsStage
+              result={result}
+              beforeUrl={t1Drop.previewUrl}
+              afterUrl={t2Drop.previewUrl}
+              viewMode={viewMode}
+              setViewMode={setViewMode}
+              sliderPosition={sliderPosition}
+              setSliderPosition={setSliderPosition}
+              overlayOpacity={overlayOpacity}
+              setOverlayOpacity={setOverlayOpacity}
+              hoveredRegionId={hoveredRegionId}
+              setHoveredRegionId={setHoveredRegionId}
+              selectedRegionId={selectedRegionId}
+              setSelectedRegionId={setSelectedRegionId}
+              onReset={handleReset}
+            />
+          ) : (
+            <UploadStage
+              t1Drop={t1Drop}
+              t2Drop={t2Drop}
+              samples={samples}
+              activeSampleId={activeSampleId}
+              onSelectSample={handleSelectSample}
+              onRunAnalysis={handleRun}
+              canRun={hasBothImages}
+            />
+          )}
+        </Panel>
+      </div>
+
+      {/* Sticky Bottom Action Bar for Mobile Screens */}
+      {state !== 'processing' && (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#07090C]/95 border-t border-line p-3 flex items-center justify-between backdrop-blur-md">
+          <div className="font-mono text-[10px] text-muted">
+            {state === 'results' ? (
+              <span className="text-ok font-semibold">ANALYSIS COMPLETE</span>
+            ) : hasBothImages ? (
+              <span className="text-text">READY TO EXECUTE</span>
+            ) : (
+              <span>UPLOAD T1 & T2</span>
+            )}
+          </div>
+
+          {state === 'results' ? (
+            <ChamferButton
+              size="sm"
+              variant="primary"
+              onClick={handleReset}
+            >
+              NEW SCAN
+            </ChamferButton>
+          ) : (
+            <ChamferButton
+              size="sm"
+              variant="primary"
+              disabled={!hasBothImages}
+              onClick={handleRun}
+              icon={Play}
+            >
+              RUN ANALYSIS
+            </ChamferButton>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
+export default Analyzer;
