@@ -7,15 +7,29 @@
     color-scheme: dark;
   }
 
+  /*
+   * Fluid Root Font Scale:
+   * 1.0417vw at 1920px = 20px (exact 125% zoom equivalent for 1080p desktop).
+   * Clamped to min 16px (100% on <=1440px laptop displays) and max 22px (ultra-wide guard).
+   * On mobile screens (<=767px), font-size remains locked at 16px.
+   */
   html {
+    font-size: clamp(16px, 1.0417vw, 22px);
     background-color: #07090C;
     color: #ECEEF1;
     font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
+  @media (max-width: 767px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
   body {
     margin: 0;
     padding: 0;
+    font-size: 1rem;
     background-color: #07090C;
     overflow-x: hidden;
   }
@@ -27,13 +41,13 @@
 }
 
 @layer utilities {
-  /* Chamfer cut: top-right and bottom-left clipped */
+  /* Chamfer cut in rem: top-right and bottom-left clipped (8px -> 0.5rem, 10px -> 0.625rem) */
   .chamfer-cut {
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    clip-path: polygon(0 0, calc(100% - 0.5rem) 0, 100% 0.5rem, 100% 100%, 0.5rem 100%, 0 calc(100% - 0.5rem));
   }
 
   .chamfer-cut-lg {
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    clip-path: polygon(0 0, calc(100% - 0.625rem) 0, 100% 0.625rem, 100% 100%, 0.625rem 100%, 0 calc(100% - 0.625rem));
   }
 
   /* Photo bottom fade to background */
@@ -45,7 +59,7 @@
   /* Section label typography */
   .section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 0.6875rem; /* 11px */
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #8A929D;

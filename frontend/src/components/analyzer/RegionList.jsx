@@ -11,12 +11,12 @@ export function RegionList({
 }) {
   return (
     <div className={`flex flex-col space-y-2.5 ${className}`}>
-      <div className="font-mono text-[10px] text-muted uppercase tracking-wider flex items-center justify-between pb-1 border-b border-line">
+      <div className="font-mono text-[0.625rem] text-muted uppercase tracking-wider flex items-center justify-between pb-1 border-b border-line">
         <span className="font-semibold text-text">TARGET REGION AUDIT</span>
         <span className="text-faint">COUNT: {regions.length}</span>
       </div>
 
-      <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
+      <div className="space-y-2 max-h-[18.75rem] overflow-y-auto pr-1">
         {regions.length === 0 ? (
           <div className="py-6 text-center font-mono text-xs text-muted">
             NO ANOMALIES RECORDED

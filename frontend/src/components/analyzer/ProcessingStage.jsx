@@ -9,11 +9,11 @@ export function ProcessingStage({
   onCancel,
 }) {
   return (
-    <div className="w-full flex flex-col justify-between min-h-[520px] bg-panel">
+    <div className="w-full flex flex-col justify-between min-h-[32.5rem] bg-panel">
       {/* Realtime Pipeline Monitor Header */}
       <div className="px-6 py-4 border-b border-line bg-[#0A0E13] flex items-center justify-between">
         <div>
-          <span className="font-mono text-[10px] text-accent uppercase tracking-widest block font-semibold">
+          <span className="font-mono text-[0.625rem] text-accent uppercase tracking-widest block font-semibold">
             REALTIME PIPELINE MONITOR
           </span>
           <h3 className="text-lg md:text-xl text-text font-display uppercase tracking-wide mt-0.5">
@@ -28,7 +28,7 @@ export function ProcessingStage({
       </div>
 
       {/* Main Progress Stepper Container */}
-      <div className="max-w-2xl mx-auto w-full my-auto px-6 py-10" aria-live="polite">
+      <div className="max-w-[42rem] mx-auto w-full my-auto px-6 py-10" aria-live="polite">
         {/* Stepper list */}
         <div className="space-y-6">
           {PROCESSING_STEPS.map((step, idx) => {
@@ -49,9 +49,9 @@ export function ProcessingStage({
                   }`}
                 >
                   {isCompleted ? (
-                    <Check size={14} strokeWidth={2.5} />
+                    <Check strokeWidth={2.5} className="w-3.5 h-3.5" />
                   ) : isCurrent ? (
-                    <Loader2 size={13} strokeWidth={2.5} className="animate-spin" />
+                    <Loader2 strokeWidth={2.5} className="w-[0.8125rem] h-[0.8125rem] animate-spin" />
                   ) : (
                     step.id
                   )}
@@ -72,7 +72,7 @@ export function ProcessingStage({
                       {step.id} {step.title}
                     </span>
 
-                    <span className="font-mono text-[10px] tracking-wider uppercase">
+                    <span className="font-mono text-[0.625rem] tracking-wider uppercase">
                       {isCompleted && <span className="text-ok">COMPLETE</span>}
                       {isCurrent && <span className="text-accent">RUNNING {progress}%</span>}
                       {isPending && <span className="text-faint">PENDING</span>}
@@ -100,7 +100,7 @@ export function ProcessingStage({
 
         {/* Global Progress Bar */}
         <div className="mt-8 pt-6 border-t border-line">
-          <div className="flex items-center justify-between font-mono text-[10px] text-muted mb-2 tracking-wider">
+          <div className="flex items-center justify-between font-mono text-[0.625rem] text-muted mb-2 tracking-wider">
             <span>PIPELINE TOTAL COMPLETION</span>
             <span className="text-text font-bold">{progress}%</span>
           </div>
@@ -128,7 +128,7 @@ export function ProcessingStage({
       </div>
 
       {/* GPU Worker Telemetry */}
-      <div className="font-mono text-[10px] text-faint text-center py-3 border-t border-line bg-[#0A0E13]">
+      <div className="font-mono text-[0.625rem] text-faint text-center py-3 border-t border-line bg-[#0A0E13]">
         ACTIVE GPU WORKER: NODE-US-EAST-4 // TENSOR RT 10.2 COMPILED
       </div>
     </div>

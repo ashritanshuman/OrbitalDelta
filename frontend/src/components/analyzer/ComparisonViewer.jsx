@@ -110,7 +110,7 @@ export function ComparisonViewer({
         />
 
         {viewMode === 'overlay' && (
-          <div className="flex items-center gap-2 font-mono text-[10px] text-muted">
+          <div className="flex items-center gap-2 font-mono text-[0.625rem] text-muted">
             <span>OPACITY:</span>
             <input
               type="range"
@@ -126,14 +126,14 @@ export function ComparisonViewer({
           </div>
         )}
 
-        <div className="flex items-center gap-3 font-mono text-[10px] text-muted">
+        <div className="flex items-center gap-3 font-mono text-[0.625rem] text-muted">
           <span className="hidden sm:inline">PROJECTION: UTM ZONE 21S</span>
           <span className="text-ok font-medium">● SYNCED</span>
         </div>
       </div>
 
       {/* Main Canvas Area */}
-      <div className="relative flex-1 min-h-[460px] bg-[#07090C] overflow-hidden flex items-center justify-center">
+      <div className="relative flex-1 min-h-[28.75rem] bg-[#07090C] overflow-hidden flex items-center justify-center">
         {viewMode === 'side' ? (
           /* Side by side mode */
           <div className="w-full h-full grid grid-cols-2 divide-x divide-line relative">
@@ -144,7 +144,7 @@ export function ComparisonViewer({
                 alt="T1 Baseline Reference"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[10px] text-text font-semibold">
+              <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-text font-semibold">
                 T1: REFERENCE [BASELINE]
               </div>
             </div>
@@ -156,7 +156,7 @@ export function ComparisonViewer({
                 alt="T2 Target Evaluated"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[10px] text-accent font-semibold">
+              <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-accent font-semibold">
                 T2: ACQUIRED [TARGET]
               </div>
 
@@ -229,12 +229,12 @@ export function ComparisonViewer({
                   transform: 'translateX(-50%)',
                 }}
               >
-                <div className="w-[2px] h-full bg-text shadow-[0_0_8px_rgba(0,0,0,0.8)]" />
+                <div className="w-[0.125rem] h-full bg-text shadow-[0_0_0.5rem_rgba(0,0,0,0.8)]" />
                 <div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-panel border border-accent flex items-center justify-center pointer-events-auto cursor-ew-resize shadow-md"
                   aria-hidden="true"
                 >
-                  <div className="flex items-center gap-0.5 text-accent font-bold text-[10px]">
+                  <div className="flex items-center gap-0.5 text-accent font-bold text-[0.625rem]">
                     <span>◀</span>
                     <span>▶</span>
                   </div>
@@ -256,10 +256,10 @@ export function ComparisonViewer({
             ))}
 
             {/* Epoch Badges in Canvas Corners */}
-            <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[10px] text-text pointer-events-none z-20">
+            <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[0.625rem] text-text pointer-events-none z-20">
               T1: REFERENCE [2024-03-12]
             </div>
-            <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[10px] text-accent pointer-events-none z-20">
+            <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[0.625rem] text-accent pointer-events-none z-20">
               T2: ACQUIRED [2025-03-10]
             </div>
           </div>
@@ -267,7 +267,7 @@ export function ComparisonViewer({
       </div>
 
       {/* Viewer Footer Telemetry Bar */}
-      <div className="px-4 py-2.5 bg-panel border-t border-line flex flex-wrap items-center justify-between gap-3 text-muted font-mono text-[10px]">
+      <div className="px-4 py-2.5 bg-panel border-t border-line flex flex-wrap items-center justify-between gap-3 text-muted font-mono text-[0.625rem]">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
             <div className="w-12 h-1 border-b-2 border-x border-text" />

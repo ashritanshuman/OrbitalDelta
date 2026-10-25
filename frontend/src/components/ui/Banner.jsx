@@ -16,7 +16,7 @@ export function Banner({
       className={`w-full p-4 border border-warn/50 bg-[#17120A] text-warn flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono ${className}`}
     >
       <div className="flex items-center gap-3">
-        <AlertTriangle size={18} strokeWidth={1.5} className="text-warn flex-shrink-0" />
+        <AlertTriangle strokeWidth={1.5} className="w-[1.125rem] h-[1.125rem] text-warn flex-shrink-0" />
         <div className="text-xs tracking-wider leading-relaxed">
           <span className="font-bold uppercase mr-2">[PIPELINE EXCEPTION]:</span>
           <span>{message}</span>

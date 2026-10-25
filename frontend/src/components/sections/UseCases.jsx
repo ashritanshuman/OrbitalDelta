@@ -44,11 +44,11 @@ export function UseCases() {
         {cases.map((c, idx) => (
           <div
             key={idx}
-            className="relative bg-panel border border-line overflow-hidden flex flex-col justify-between group min-h-[380px]"
+            className="relative bg-panel border border-line overflow-hidden flex flex-col justify-between group min-h-[23.75rem]"
           >
             {/* Corner Ticks */}
-            <span className="absolute -top-[5px] -left-[5px] text-faint font-mono text-[10px] select-none z-20">+</span>
-            <span className="absolute -top-[5px] -right-[5px] text-faint font-mono text-[10px] select-none z-20">+</span>
+            <span className="absolute -top-[0.3125rem] -left-[0.3125rem] text-faint font-mono text-[0.625rem] select-none z-20">+</span>
+            <span className="absolute -top-[0.3125rem] -right-[0.3125rem] text-faint font-mono text-[0.625rem] select-none z-20">+</span>
 
             {/* Photo Backdrop Header with bottom fade */}
             <div className="relative h-44 w-full overflow-hidden border-b border-line bg-bg">
@@ -59,7 +59,7 @@ export function UseCases() {
                 className="w-full h-full object-cover grayscale-[25%] group-hover:scale-105 transition-transform duration-500 photo-scrim-bottom"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent pointer-events-none" />
-              <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[10px] text-accent font-semibold uppercase tracking-wider">
+              <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-accent font-semibold uppercase tracking-wider">
                 {c.badge}
               </div>
             </div>
@@ -75,7 +75,7 @@ export function UseCases() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-line flex items-center justify-between font-mono text-[10px] md:text-[11px] text-faint tracking-wider">
+              <div className="mt-6 pt-4 border-t border-line flex items-center justify-between font-mono text-[0.625rem] md:text-[0.6875rem] text-faint tracking-wider">
                 <span>{c.statLabel}</span>
                 <span className="text-text font-semibold">{c.statValue}</span>
               </div>

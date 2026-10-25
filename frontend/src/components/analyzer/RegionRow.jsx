@@ -24,7 +24,7 @@ export function RegionRow({
       className={`p-3 bg-[#07090C] border transition-all duration-150 cursor-pointer ${
         active
           ? isHuman
-            ? 'border-accent bg-accent/10 shadow-[0_0_10px_rgba(255,90,31,0.2)]'
+            ? 'border-accent bg-accent/10 shadow-[0_0_0.625rem_rgba(255,90,31,0.2)]'
             : 'border-muted bg-white/5'
           : 'border-line hover:border-line/90'
       }`}
@@ -42,7 +42,7 @@ export function RegionRow({
           <Chip classification={region.classification} />
         </div>
 
-        <span className="font-mono text-[10px] text-ok font-semibold">
+        <span className="font-mono text-[0.625rem] text-ok font-semibold">
           {formatConfidence(region.confidence)} CONF
         </span>
       </div>
@@ -53,13 +53,13 @@ export function RegionRow({
       </div>
 
       {region.label && region.description && (
-        <p className="font-sans text-[11px] text-muted mb-1.5 leading-relaxed">
+        <p className="font-sans text-[0.6875rem] text-muted mb-1.5 leading-relaxed">
           {region.description}
         </p>
       )}
 
       {/* Bottom Telemetry Metrics */}
-      <div className="font-mono text-[9px] md:text-[10px] text-muted flex items-center justify-between pt-1 border-t border-line/40">
+      <div className="font-mono text-[0.5625rem] md:text-[0.625rem] text-muted flex items-center justify-between pt-1 border-t border-line/40">
         <span>EST AREA: {((region.bbox?.w * region.bbox?.h * 32.5) || 2.4).toFixed(2)} KM²</span>
         <span className="text-faint uppercase">
           {isHuman ? 'ANTHROPIC VECTOR' : 'NATURAL SHIFT'}

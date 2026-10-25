@@ -50,14 +50,14 @@ export function ReportPanel({
         {isExporting ? 'GENERATING DOSSIER...' : 'DOWNLOAD REPORT (PDF)'}
       </ChamferButton>
 
-      <div className="flex items-center justify-between px-1 font-mono text-[10px] text-muted">
+      <div className="flex items-center justify-between px-1 font-mono text-[0.625rem] text-muted">
         <button
           id="btn-new-analysis"
           type="button"
           onClick={onReset}
           className="inline-flex items-center gap-1 text-accent hover:underline uppercase cursor-pointer"
         >
-          <RotateCcw size={11} strokeWidth={2} />
+          <RotateCcw strokeWidth={2} className="w-[0.6875rem] h-[0.6875rem]" />
           NEW ANALYSIS →
         </button>
 

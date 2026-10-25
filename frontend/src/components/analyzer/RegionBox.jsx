@@ -29,8 +29,8 @@ export function RegionBox({
       className={`absolute transition-all duration-150 cursor-pointer pointer-events-auto border-2 ${
         active
           ? isHuman
-            ? 'border-accent bg-accent/25 shadow-[0_0_12px_rgba(255,90,31,0.4)] z-30'
-            : 'border-muted bg-muted/25 shadow-[0_0_12px_rgba(138,146,157,0.4)] z-30'
+            ? 'border-accent bg-accent/25 shadow-[0_0_0.75rem_rgba(255,90,31,0.4)] z-30'
+            : 'border-muted bg-muted/25 shadow-[0_0_0.75rem_rgba(138,146,157,0.4)] z-30'
           : isHuman
           ? 'border-accent/80 bg-accent/10 hover:border-accent hover:bg-accent/20 z-10'
           : 'border-faint bg-white/5 hover:border-muted hover:bg-white/10 z-10'
@@ -39,7 +39,7 @@ export function RegionBox({
     >
       {/* Corner Tag */}
       <div
-        className={`absolute -top-6 left-0 px-1.5 py-0.5 font-mono text-[9px] font-bold tracking-wider uppercase select-none whitespace-nowrap ${
+        className={`absolute -top-6 left-0 px-1.5 py-0.5 font-mono text-[0.5625rem] font-bold tracking-wider uppercase select-none whitespace-nowrap ${
           active
             ? isHuman
               ? 'bg-accent text-bg'

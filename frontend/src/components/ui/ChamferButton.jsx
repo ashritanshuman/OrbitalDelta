@@ -37,7 +37,7 @@ export function ChamferButton({
       {...props}
     >
       <span className="flex items-center gap-2">
-        {Icon && <Icon size={16} strokeWidth={1.5} />}
+        {Icon && <Icon strokeWidth={1.5} className="w-4 h-4" />}
         {children}
       </span>
     </button>

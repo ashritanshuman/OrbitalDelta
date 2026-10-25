@@ -29,7 +29,7 @@ export function TopBar() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto h-16 px-4 md:px-8 flex items-center justify-between">
+      <div className="max-w-[76rem] mx-auto h-16 px-4 md:px-8 flex items-center justify-between">
         {/* Brand Wordmark */}
         <div className="flex items-center gap-3">
           <span className="text-accent text-sm font-bold select-none">▲</span>
@@ -39,13 +39,13 @@ export function TopBar() {
           >
             ORBITAL DELTA
           </a>
-          <span className="font-mono text-[10px] text-muted px-1.5 py-0.5 bg-panel border border-line hidden sm:inline-block tracking-wider">
+          <span className="font-mono text-[0.625rem] text-muted px-1.5 py-0.5 bg-panel border border-line hidden sm:inline-block tracking-wider">
             ORB-SYS 4.2
           </span>
         </div>
 
         {/* Anchor Nav Links */}
-        <nav className="hidden md:flex items-center gap-8 font-mono text-[11px] tracking-widest uppercase">
+        <nav className="hidden md:flex items-center gap-8 font-mono text-[0.6875rem] tracking-widest uppercase">
           <a
             href="#analyzer"
             onClick={scrollTo('analyzer')}
@@ -71,7 +71,7 @@ export function TopBar() {
 
         {/* Telemetry Status & CTA */}
         <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-panel border border-line font-mono text-[10px] text-muted tracking-widest uppercase">
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-panel border border-line font-mono text-[0.625rem] text-muted tracking-widest uppercase">
             <StatusDot status="ok" pulse />
             <span>SYSTEM NOMINAL</span>
           </div>

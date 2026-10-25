@@ -19,7 +19,7 @@ export function UploadStage({
   return (
     <div className="w-full flex flex-col justify-between">
       {/* Telemetry Header Strip */}
-      <div className="px-4 py-2 bg-[#0A0E13] border-b border-line flex flex-wrap items-center justify-between gap-y-2 text-muted font-mono text-[10px]">
+      <div className="px-4 py-2 bg-[#0A0E13] border-b border-line flex flex-wrap items-center justify-between gap-y-2 text-muted font-mono text-[0.625rem]">
         <div className="flex items-center gap-3">
           <span className="text-accent font-semibold">GRID REF:</span>
           <span className="text-text">LAT 08°45'12.4"S / LON 063°54'02.1"W</span>
@@ -41,12 +41,12 @@ export function UploadStage({
         </div>
       </div>
 
-      <div className="p-6 md:p-8 flex flex-col gap-8 max-w-5xl mx-auto w-full">
+      <div className="p-6 md:p-8 flex flex-col gap-8 max-w-[64rem] mx-auto w-full">
         {/* Module Title */}
         <div className="flex flex-col text-center sm:text-left">
           <div className="flex items-center gap-2 mb-1 justify-center sm:justify-start">
             <span className="w-1.5 h-1.5 bg-accent" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-semibold">
+            <span className="font-mono text-[0.625rem] uppercase tracking-widest text-accent font-semibold">
               INGESTION MODULE
             </span>
           </div>
@@ -97,7 +97,7 @@ export function UploadStage({
 
         {/* Run Analysis Action Button */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-          <div className="font-mono text-[10px] text-faint uppercase tracking-wider text-center sm:text-left">
+          <div className="font-mono text-[0.625rem] text-faint uppercase tracking-wider text-center sm:text-left">
             STATUS: {canRun ? 'DUAL RASTERS READY FOR PROCESSING' : 'AWAITING BOTH EPOCH CAPTURES'}
           </div>
 
@@ -116,7 +116,7 @@ export function UploadStage({
       </div>
 
       {/* Footer Ingest Note */}
-      <div className="font-mono text-[10px] text-faint text-center py-4 border-t border-line bg-[#0A0E13]">
+      <div className="font-mono text-[0.625rem] text-faint text-center py-4 border-t border-line bg-[#0A0E13]">
         SECURE ORBITAL INGEST ENCRYPTION: AES-256-GCM // MAX RASTER CAPACITY 10MB
       </div>
     </div>

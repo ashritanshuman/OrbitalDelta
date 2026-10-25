@@ -16,12 +16,12 @@ export function Section({
       id={id}
       className={`w-full py-16 md:py-24 bg-bg ${borderBottom ? 'border-b border-line' : ''} ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="max-w-[76rem] mx-auto px-4 md:px-8">
         {(number || category || title || rightContent) && (
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 gap-4">
             <div>
               {(number || category) && (
-                <span className="font-mono text-[11px] tracking-widest text-muted uppercase block mb-2">
+                <span className="font-mono text-[0.6875rem] tracking-widest text-muted uppercase block mb-2">
                   {number && category ? `${number} / ${category}` : number || category}
                 </span>
               )}
@@ -38,7 +38,7 @@ export function Section({
             </div>
 
             {rightContent && (
-              <div className="font-mono text-[10px] md:text-[11px] text-faint tracking-wider uppercase">
+              <div className="font-mono text-[0.625rem] md:text-[0.6875rem] text-faint tracking-wider uppercase">
                 {rightContent}
               </div>
             )}

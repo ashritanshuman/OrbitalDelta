@@ -40,7 +40,7 @@ export function ResultsStage({
   return (
     <div className="w-full flex flex-col">
       {/* Top Controller Header Strip */}
-      <div className="w-full border-b border-line bg-[#0A0E13] px-4 py-2 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px]">
+      <div className="w-full border-b border-line bg-[#0A0E13] px-4 py-2 flex flex-wrap items-center justify-between gap-3 font-mono text-[0.625rem]">
         <div className="flex items-center gap-2">
           <span className="px-2.5 py-0.5 uppercase tracking-wider text-text bg-panel border border-accent font-semibold">
             RESULTS STATE
@@ -56,7 +56,7 @@ export function ResultsStage({
       </div>
 
       {/* 65 / 35 Split Layout */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[40rem]">
         {/* Left Column: Interactive Raster Viewer (65% -> col-span-8) */}
         <div className="lg:col-span-8 flex flex-col border-b lg:border-b-0 lg:border-r border-line relative">
           <ComparisonViewer

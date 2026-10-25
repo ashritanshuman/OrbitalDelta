@@ -7,7 +7,7 @@ export function MetricsRow({ result, className = '' }) {
   return (
     <div className={`grid grid-cols-3 divide-x divide-line border-b border-line bg-panel ${className}`}>
       <div className="p-3.5 flex flex-col">
-        <span className="font-mono text-[10px] text-muted uppercase tracking-wider">
+        <span className="font-mono text-[0.625rem] text-muted uppercase tracking-wider">
           CHANGED AREA
         </span>
         <span className="font-mono text-lg md:text-xl text-accent font-semibold mt-1">
@@ -16,7 +16,7 @@ export function MetricsRow({ result, className = '' }) {
       </div>
 
       <div className="p-3.5 flex flex-col">
-        <span className="font-mono text-[10px] text-muted uppercase tracking-wider">
+        <span className="font-mono text-[0.625rem] text-muted uppercase tracking-wider">
           REGIONS
         </span>
         <span className="font-mono text-lg md:text-xl text-text font-semibold mt-1">
@@ -25,7 +25,7 @@ export function MetricsRow({ result, className = '' }) {
       </div>
 
       <div className="p-3.5 flex flex-col">
-        <span className="font-mono text-[10px] text-muted uppercase tracking-wider">
+        <span className="font-mono text-[0.625rem] text-muted uppercase tracking-wider">
           CONFIDENCE
         </span>
         <span className="font-mono text-lg md:text-xl text-ok font-semibold mt-1">

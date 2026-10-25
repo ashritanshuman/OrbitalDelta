@@ -18,7 +18,7 @@ export function MetricTile({
       <span className={`font-mono font-light tracking-tight ${valueSizeClass} ${valueColor} mb-1.5`}>
         {value}
       </span>
-      <span className="font-mono text-[10px] md:text-[11px] tracking-widest text-muted uppercase">
+      <span className="font-mono text-[0.625rem] md:text-[0.6875rem] tracking-widest text-muted uppercase">
         {label}
       </span>
     </div>

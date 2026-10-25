@@ -28,7 +28,7 @@ export function ClosingCta() {
 
       {/* Centered CTA Architecture Container */}
       <div className="relative z-10 max-w-2xl mx-auto px-4 md:px-8 text-center flex flex-col items-center">
-        <div className="font-mono text-[10px] md:text-[11px] uppercase tracking-widest text-accent mb-4 font-semibold">
+        <div className="font-mono text-[0.625rem] md:text-[0.6875rem] uppercase tracking-widest text-accent mb-4 font-semibold">
           MISSION CONSOLE // LIVE DEMONSTRATION READY
         </div>
 
@@ -45,7 +45,7 @@ export function ClosingCta() {
           LAUNCH ANALYZER
         </ChamferButton>
 
-        <div className="font-mono text-[10px] md:text-[11px] text-muted tracking-widest uppercase">
+        <div className="font-mono text-[0.625rem] md:text-[0.6875rem] text-muted tracking-widest uppercase">
           LAT 00°00'00&quot; / LON 00°00'00&quot; [REFERENCE GROUND ZERO]
         </div>
       </div>

@@ -14,16 +14,16 @@ export function Panel({
     >
       {cornerTicks && (
         <>
-          <span className="absolute -top-[5px] -left-[5px] text-faint font-mono text-[10px] leading-none select-none pointer-events-none z-20">
+          <span className="absolute -top-[0.3125rem] -left-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none pointer-events-none z-20">
             +
           </span>
-          <span className="absolute -top-[5px] -right-[5px] text-faint font-mono text-[10px] leading-none select-none pointer-events-none z-20">
+          <span className="absolute -top-[0.3125rem] -right-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none pointer-events-none z-20">
             +
           </span>
-          <span className="absolute -bottom-[5px] -left-[5px] text-faint font-mono text-[10px] leading-none select-none pointer-events-none z-20">
+          <span className="absolute -bottom-[0.3125rem] -left-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none pointer-events-none z-20">
             +
           </span>
-          <span className="absolute -bottom-[5px] -right-[5px] text-faint font-mono text-[10px] leading-none select-none pointer-events-none z-20">
+          <span className="absolute -bottom-[0.3125rem] -right-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none pointer-events-none z-20">
             +
           </span>
         </>

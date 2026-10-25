@@ -46,9 +46,8 @@ export function HowItWorks() {
                     {step.num}
                   </span>
                   <Icon
-                    size={22}
                     strokeWidth={1.5}
-                    className="text-muted group-hover:text-accent transition-colors duration-150"
+                    className="w-[1.375rem] h-[1.375rem] text-muted group-hover:text-accent transition-colors duration-150"
                   />
                 </div>
 
@@ -61,7 +60,7 @@ export function HowItWorks() {
                 </p>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-line/60 font-mono text-[10px] text-faint tracking-widest uppercase">
+              <div className="mt-8 pt-4 border-t border-line/60 font-mono text-[0.625rem] text-faint tracking-widest uppercase">
                 STAGE {step.num} // VERIFIED
               </div>
             </div>

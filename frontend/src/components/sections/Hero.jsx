@@ -11,7 +11,7 @@ export function Hero({ onLoadSampleAndScroll }) {
   };
 
   return (
-    <section className="relative w-full border-b border-line overflow-hidden min-h-[640px] md:min-h-[720px] flex flex-col justify-between pt-20">
+    <section className="relative w-full border-b border-line overflow-hidden min-h-[40rem] md:min-h-[45rem] flex flex-col justify-between pt-20">
       {/* Background Satellite Photography with Scrim */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
         <img
@@ -30,7 +30,7 @@ export function Hero({ onLoadSampleAndScroll }) {
       {/* Architectural Ghost Wordmark Layer */}
       <div className="absolute inset-0 z-0 flex items-center justify-end select-none pointer-events-none pr-6 md:pr-12 overflow-hidden">
         <span
-          className="text-[140px] sm:text-[200px] lg:text-[260px] font-bold text-white opacity-[0.03] tracking-[0.18em] leading-none translate-y-12 select-none"
+          className="text-[8.75rem] sm:text-[12.5rem] lg:text-[16.25rem] font-bold text-white opacity-[0.03] tracking-[0.18em] leading-none translate-y-12 select-none"
           style={{ fontFamily: 'Michroma, sans-serif' }}
         >
           DELTA
@@ -38,12 +38,12 @@ export function Hero({ onLoadSampleAndScroll }) {
       </div>
 
       {/* Hero Content Body */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 md:px-8 pt-12 md:pt-20 pb-12 flex flex-col justify-between flex-1">
+      <div className="relative z-10 max-w-[76rem] mx-auto w-full px-4 md:px-8 pt-12 md:pt-20 pb-12 flex flex-col justify-between flex-1">
         <div className="max-w-3xl flex flex-col">
           {/* Telemetry Sensor Tag */}
           <div className="flex items-center gap-2 mb-6">
             <span className="w-1.5 h-1.5 bg-accent" />
-            <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-widest text-accent font-semibold">
+            <span className="font-mono text-[0.625rem] md:text-[0.6875rem] uppercase tracking-widest text-accent font-semibold">
               SPECTRAL SENSOR SUITE // ACTIVE DISCRIMINATION
             </span>
           </div>
@@ -91,19 +91,19 @@ export function Hero({ onLoadSampleAndScroll }) {
 
         {/* Telemetry Footer Box */}
         <div className="mt-16 w-full flex flex-col lg:flex-row items-start lg:items-end justify-between gap-4">
-          <div className="flex items-center gap-3 font-mono text-[10px] md:text-[11px] text-faint tracking-widest uppercase">
+          <div className="flex items-center gap-3 font-mono text-[0.625rem] md:text-[0.6875rem] text-faint tracking-widest uppercase">
             <span className="inline-block w-2 h-2 border border-ok" />
             <span>ORBITAL RECEPTOR 09 // READY FOR STREAM</span>
           </div>
 
           {/* Corner Ticked Metric Box */}
           <div className="relative bg-panel/90 border border-line px-4 py-2.5 flex items-center">
-            <span className="absolute -top-[5px] -left-[5px] text-faint font-mono text-[10px] leading-none select-none">+</span>
-            <span className="absolute -top-[5px] -right-[5px] text-faint font-mono text-[10px] leading-none select-none">+</span>
-            <span className="absolute -bottom-[5px] -left-[5px] text-faint font-mono text-[10px] leading-none select-none">+</span>
-            <span className="absolute -bottom-[5px] -right-[5px] text-faint font-mono text-[10px] leading-none select-none">+</span>
+            <span className="absolute -top-[0.3125rem] -left-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none">+</span>
+            <span className="absolute -top-[0.3125rem] -right-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none">+</span>
+            <span className="absolute -bottom-[0.3125rem] -left-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none">+</span>
+            <span className="absolute -bottom-[0.3125rem] -right-[0.3125rem] text-faint font-mono text-[0.625rem] leading-none select-none">+</span>
 
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[10px] md:text-[11px] text-text tracking-widest">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[0.625rem] md:text-[0.6875rem] text-text tracking-widest">
               <div><span className="text-muted">ORBIT:</span> 550 KM</div>
               <div className="hidden sm:inline text-line">/</div>
               <div><span className="text-muted">REVISIT:</span> 24 H</div>
