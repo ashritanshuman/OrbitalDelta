@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   /*
@@ -15,8 +15,8 @@
    */
   html {
     font-size: clamp(16px, 1.0417vw, 22px);
-    background-color: #07090C;
-    color: #ECEEF1;
+    background-color: #F4F3EE;
+    color: #1C2228;
     font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -30,12 +30,13 @@
     margin: 0;
     padding: 0;
     font-size: 1rem;
-    background-color: #07090C;
+    background-color: #F4F3EE;
+    color: #1C2228;
     overflow-x: hidden;
   }
 
   *:focus-visible {
-    outline: 1px solid #FF5A1F;
+    outline: 1px solid #F15A24;
     outline-offset: 2px;
   }
 }
@@ -62,7 +63,7 @@
     font-size: 0.6875rem; /* 11px */
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #8A929D;
+    color: #626A73;
   }
 }
 

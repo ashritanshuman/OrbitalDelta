@@ -25,7 +25,7 @@ export function TopBar() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-[#07090C]/90 backdrop-blur-md border-b border-line shadow-none'
+          ? 'bg-[#F4F3EE]/95 backdrop-blur-md border-b border-line shadow-sm'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -35,7 +35,9 @@ export function TopBar() {
           <span className="text-accent text-sm font-bold select-none">▲</span>
           <a
             href="#"
-            className="text-text font-display text-xs md:text-sm font-semibold tracking-wider uppercase select-none hover:text-white transition-colors"
+            className={`font-display text-xs md:text-sm font-semibold tracking-wider uppercase select-none hover:text-accent transition-colors ${
+              isScrolled ? 'text-text' : 'text-white'
+            }`}
           >
             ORBITAL DELTA
           </a>
@@ -46,21 +48,27 @@ export function TopBar() {
           <a
             href="#analyzer"
             onClick={scrollTo('analyzer')}
-            className="text-muted hover:text-text transition-colors py-1 border-b border-transparent hover:border-accent"
+            className={`py-1 border-b border-transparent hover:border-accent transition-colors ${
+              isScrolled ? 'text-muted hover:text-text' : 'text-[#8A929D] hover:text-white'
+            }`}
           >
             Try it
           </a>
           <a
             href="#method"
             onClick={scrollTo('method')}
-            className="text-muted hover:text-text transition-colors py-1 border-b border-transparent hover:border-text"
+            className={`py-1 border-b border-transparent hover:border-accent transition-colors ${
+              isScrolled ? 'text-muted hover:text-text' : 'text-[#8A929D] hover:text-white'
+            }`}
           >
             How it works
           </a>
           <a
             href="#applications"
             onClick={scrollTo('applications')}
-            className="text-muted hover:text-text transition-colors py-1 border-b border-transparent hover:border-text"
+            className={`py-1 border-b border-transparent hover:border-accent transition-colors ${
+              isScrolled ? 'text-muted hover:text-text' : 'text-[#8A929D] hover:text-white'
+            }`}
           >
             Uses
           </a>
@@ -68,7 +76,13 @@ export function TopBar() {
 
         {/* Telemetry Status & CTA */}
         <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-panel border border-line font-mono text-[0.625rem] text-muted tracking-widest uppercase">
+          <div
+            className={`hidden lg:flex items-center gap-2 px-3 py-1 font-mono text-[0.625rem] tracking-widest uppercase ${
+              isScrolled
+                ? 'bg-panel border border-line text-muted'
+                : 'bg-[#0E1217] border border-[#232A33] text-[#8A929D]'
+            }`}
+          >
             <StatusDot status="ok" pulse />
             <span>Ready</span>
           </div>
@@ -77,7 +91,6 @@ export function TopBar() {
             size="sm"
             variant="primary"
             onClick={scrollTo('analyzer')}
-            className="border-accent hover:bg-accent"
           >
             Start
           </ChamferButton>

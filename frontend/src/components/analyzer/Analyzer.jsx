@@ -150,7 +150,7 @@ export function Analyzer({ analysisHook }) {
 
       {/* Sticky Bottom Action Bar for Mobile Screens */}
       {state !== 'processing' && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#07090C]/95 border-t border-line p-3 flex items-center justify-between backdrop-blur-md">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#F4F3EE]/95 border-t border-line p-3 flex items-center justify-between backdrop-blur-md">
           <div className="font-mono text-[0.625rem] text-muted">
             {state === 'results' ? (
               <span className="text-ok font-semibold">DONE</span>

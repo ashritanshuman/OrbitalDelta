@@ -19,7 +19,7 @@ export function PresetDatasets({
 }) {
   return (
     <div
-      className={`w-full bg-[#07090C] border border-line p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${className}`}
+      className={`w-full bg-surface border border-line p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${className}`}
     >
       <div className="flex items-center gap-3">
         <Database strokeWidth={1.5} className="w-[1.125rem] h-[1.125rem] text-accent flex-shrink-0" />
@@ -29,7 +29,7 @@ export function PresetDatasets({
               NO PHOTOS? TRY AN EXAMPLE
             </span>
             {presetLoading && (
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-accent/15 border border-accent/40 font-mono text-[0.5625rem] text-accent tracking-widest uppercase animate-pulse">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-softAccent border border-accent/40 font-mono text-[0.5625rem] text-accent tracking-widest uppercase animate-pulse">
                 <Loader2 className="w-2.5 h-2.5 animate-spin" />
                 LOADING
               </span>
@@ -63,8 +63,8 @@ export function PresetDatasets({
                   : 'cursor-pointer'
               } ${
                 isActive
-                  ? 'border-accent bg-accent/20 text-text font-semibold shadow-[0_0_0.625rem_rgba(255,90,31,0.2)]'
-                  : 'border-line bg-panel text-muted hover:text-text hover:border-faint'
+                  ? 'border-accent bg-softAccent text-accent font-semibold shadow-sm'
+                  : 'border-line bg-panel text-muted hover:text-text hover:border-accent'
               }`}
             >
               <span className="flex items-center gap-1.5">

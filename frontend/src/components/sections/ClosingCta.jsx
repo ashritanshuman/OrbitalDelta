@@ -17,13 +17,13 @@ export function ClosingCta() {
           src="/cta-night.jpg"
           alt="Night Earth city lights from space"
           loading="lazy"
-          className="w-full h-full object-cover opacity-25 photo-scrim-bottom"
+          className="w-full h-full object-cover opacity-25 mix-blend-multiply photo-scrim-bottom"
           onError={(e) => {
             e.currentTarget.style.display = 'none';
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
-        <div className="absolute inset-0 bg-[#07090C]/65" />
+        <div className="absolute inset-0 bg-[#F4F3EE]/75" />
       </div>
 
       {/* Centered CTA Architecture Container */}

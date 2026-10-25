@@ -25,7 +25,7 @@ export function ReportPanel({
   };
 
   return (
-    <div className={`p-4 border-t border-line bg-[#0A0E13] flex flex-col gap-3 ${className}`}>
+    <div className={`p-4 border-t border-line bg-surface flex flex-col gap-3 ${className}`}>
       {/* Report Paragraphs Summary */}
       {result?.report && result.report.length > 0 && (
         <div className="space-y-1.5 text-muted font-sans text-xs max-h-24 overflow-y-auto pr-1">
@@ -45,7 +45,7 @@ export function ReportPanel({
         onClick={handleDownloadPdf}
         disabled={isExporting}
         icon={isExporting ? Loader2 : Download}
-        className="w-full bg-[#13181F] border-line hover:border-accent"
+        className="w-full"
       >
         {isExporting ? 'Creating report...' : 'Download report'}
       </ChamferButton>

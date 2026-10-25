@@ -133,7 +133,7 @@ export function ComparisonViewer({
       </div>
 
       {/* Main Canvas Area */}
-      <div className="relative flex-1 min-h-[28.75rem] bg-[#07090C] overflow-hidden flex items-center justify-center">
+      <div className="relative flex-1 min-h-[28.75rem] bg-bg overflow-hidden flex items-center justify-center">
         {viewMode === 'side' ? (
           /* Side by side mode */
           <div className="w-full h-full grid grid-cols-2 divide-x divide-line relative">
@@ -144,7 +144,7 @@ export function ComparisonViewer({
                 alt="Before photo"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-text font-semibold">
+              <div className="absolute top-3 left-3 bg-bg/95 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-text font-semibold">
                 BEFORE
               </div>
             </div>
@@ -156,7 +156,7 @@ export function ComparisonViewer({
                 alt="After photo"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-accent font-semibold">
+              <div className="absolute top-3 right-3 bg-bg/95 border border-line px-2 py-0.5 font-mono text-[0.625rem] text-accent font-semibold">
                 AFTER
               </div>
 
@@ -229,7 +229,7 @@ export function ComparisonViewer({
                   transform: 'translateX(-50%)',
                 }}
               >
-                <div className="w-[0.125rem] h-full bg-text shadow-[0_0_0.5rem_rgba(0,0,0,0.8)]" />
+                <div className="w-[0.125rem] h-full bg-accent shadow-[0_0_0.25rem_rgba(241,90,36,0.5)]" />
                 <div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-panel border border-accent flex items-center justify-center pointer-events-auto cursor-ew-resize shadow-md"
                   aria-hidden="true"
@@ -256,10 +256,10 @@ export function ComparisonViewer({
             ))}
 
             {/* Badges in Canvas Corners */}
-            <div className="absolute top-3 left-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[0.625rem] text-text pointer-events-none z-20">
+            <div className="absolute top-3 left-3 bg-bg/95 border border-line px-2 py-1 font-mono text-[0.625rem] text-text pointer-events-none z-20">
               BEFORE
             </div>
-            <div className="absolute top-3 right-3 bg-bg/90 border border-line px-2 py-1 font-mono text-[0.625rem] text-accent pointer-events-none z-20">
+            <div className="absolute top-3 right-3 bg-bg/95 border border-line px-2 py-1 font-mono text-[0.625rem] text-accent pointer-events-none z-20">
               AFTER
             </div>
           </div>

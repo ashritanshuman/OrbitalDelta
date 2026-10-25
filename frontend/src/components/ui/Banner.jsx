@@ -13,7 +13,7 @@ export function Banner({
   return (
     <div
       role="alert"
-      className={`w-full p-4 border border-warn/50 bg-[#17120A] text-warn flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono ${className}`}
+      className={`w-full p-4 border border-warn bg-softAccent text-warn flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono ${className}`}
     >
       <div className="flex items-center gap-3">
         <AlertTriangle strokeWidth={1.5} className="w-[1.125rem] h-[1.125rem] text-warn flex-shrink-0" />
@@ -26,10 +26,10 @@ export function Banner({
       {onRetry && (
         <ChamferButton
           size="sm"
-          variant="primary"
+          variant="secondary"
           onClick={onRetry}
           icon={RefreshCw}
-          className="self-end sm:self-auto border-warn text-warn hover:bg-warn hover:text-bg"
+          className="self-end sm:self-auto border-warn text-warn hover:bg-warn hover:text-white"
         >
           Try again
         </ChamferButton>

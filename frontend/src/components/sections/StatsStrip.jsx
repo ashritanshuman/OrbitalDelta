@@ -10,7 +10,7 @@ export function StatsStrip() {
   ];
 
   return (
-    <section className="w-full bg-panel border-b border-line">
+    <section className="w-full bg-surface border-b border-line">
       <div className="max-w-[76rem] mx-auto grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-line">
         {stats.map((s, idx) => (
           <div key={idx} className="p-6 md:p-8">

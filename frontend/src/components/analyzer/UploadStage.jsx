@@ -19,7 +19,7 @@ export function UploadStage({
   return (
     <div className="w-full flex flex-col justify-between">
       {/* Telemetry Header Strip */}
-      <div className="px-4 py-2 bg-[#0A0E13] border-b border-line flex flex-wrap items-center justify-between gap-y-2 text-muted font-mono text-[0.625rem]">
+      <div className="px-4 py-2 bg-surface border-b border-line flex flex-wrap items-center justify-between gap-y-2 text-muted font-mono text-[0.625rem]">
         <div className="flex items-center gap-3">
           <span className="text-accent font-semibold">STEP:</span>
           <span className="text-text">1 OF 2 // ADD PHOTOS</span>
@@ -116,7 +116,7 @@ export function UploadStage({
       </div>
 
       {/* Footer Ingest Note */}
-      <div className="font-mono text-[0.625rem] text-faint text-center py-4 border-t border-line bg-[#0A0E13]">
+      <div className="font-mono text-[0.625rem] text-faint text-center py-4 border-t border-line bg-surface">
         Your photos stay private in your browser session.
       </div>
     </div>

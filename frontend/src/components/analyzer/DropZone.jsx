@@ -46,11 +46,11 @@ export function DropZone({
       <div
         {...dragProps}
         onClick={!previewUrl ? handleClick : undefined}
-        className={`group relative border border-dashed transition-all duration-150 bg-[#07090C] rounded-[0.25rem] p-6 flex flex-col items-center justify-center text-center select-none min-h-[16.25rem] ${
+        className={`group relative border border-dashed transition-all duration-150 bg-bg rounded-[0.25rem] p-6 flex flex-col items-center justify-center text-center select-none min-h-[16.25rem] ${
           isDragging
-            ? 'border-accent bg-accent/5'
+            ? 'border-accent bg-softAccent/40'
             : error
-            ? 'border-warn/70'
+            ? 'border-warn/70 bg-softAccent/20'
             : previewUrl
             ? 'border-line'
             : 'border-line hover:border-accent/70 cursor-pointer'
@@ -78,7 +78,7 @@ export function DropZone({
               <Upload strokeWidth={1.5} className="w-5 h-5 text-muted group-hover:text-accent transition-colors" />
             </div>
 
-            <span className="font-sans text-xs md:text-sm font-medium text-text group-hover:text-white transition-colors mb-1">
+            <span className="font-sans text-xs md:text-sm font-medium text-text group-hover:text-accent transition-colors mb-1">
               Drag a photo here, or click to choose
             </span>
             <span className="font-mono text-[0.625rem] text-muted tracking-wider mb-3">
@@ -91,7 +91,7 @@ export function DropZone({
                 e.stopPropagation();
                 handleClick();
               }}
-              className="px-3 py-1.5 bg-panel hover:bg-panel-light border border-line hover:border-accent font-mono text-[0.625rem] text-accent uppercase tracking-widest transition-colors cursor-pointer"
+              className="px-3 py-1.5 bg-panel hover:bg-surface border border-line hover:border-accent font-mono text-[0.625rem] text-accent uppercase tracking-widest transition-colors cursor-pointer"
             >
               Choose file
             </button>
@@ -107,18 +107,18 @@ export function DropZone({
               <img
                 src={previewUrl}
                 alt={file ? file.name : channelLabel}
-                className="w-full h-full object-cover grayscale-[15%]"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute top-1.5 left-1.5 bg-[#07090C]/90 px-1.5 py-0.5 border border-line font-mono text-[0.5625rem] text-ok tracking-wider uppercase font-semibold">
+              <div className="absolute top-1.5 left-1.5 bg-panel/95 px-1.5 py-0.5 border border-line font-mono text-[0.5625rem] text-ok tracking-wider uppercase font-semibold">
                 Photo added
               </div>
-              <div className="absolute inset-0 bg-[#07090C]/60 opacity-0 group-hover/preview:opacity-100 flex items-center justify-center transition-opacity">
-                <span className="font-mono text-[0.625rem] text-white bg-black/80 px-2 py-1 border border-line">
+              <div className="absolute inset-0 bg-[#1C2228]/45 opacity-0 group-hover/preview:opacity-100 flex items-center justify-center transition-opacity">
+                <span className="font-mono text-[0.625rem] text-white bg-[#1C2228]/85 px-2 py-1 border border-line">
                   Click to replace
                 </span>
               </div>
               {file && (
-                <div className="absolute bottom-1.5 right-1.5 bg-[#07090C]/90 px-1.5 py-0.5 font-mono text-[0.5625rem] text-muted">
+                <div className="absolute bottom-1.5 right-1.5 bg-panel/95 px-1.5 py-0.5 border border-line font-mono text-[0.5625rem] text-muted">
                   {formatFileSize(file.size)}
                 </div>
               )}
@@ -159,7 +159,7 @@ export function DropZone({
 
         {/* Inline Error Message */}
         {error && (
-          <div className="mt-3 px-2 py-1 bg-[#17120A] border border-warn/40 text-warn font-mono text-[0.625rem] tracking-wider uppercase text-left w-full">
+          <div className="mt-3 px-2 py-1 bg-softAccent border border-warn text-warn font-mono text-[0.625rem] tracking-wider uppercase text-left w-full">
             ! {error}
           </div>
         )}

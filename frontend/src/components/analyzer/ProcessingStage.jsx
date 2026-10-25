@@ -11,7 +11,7 @@ export function ProcessingStage({
   return (
     <div className="w-full flex flex-col justify-between min-h-[32.5rem] bg-panel">
       {/* Realtime Monitor Header */}
-      <div className="px-6 py-4 border-b border-line bg-[#0A0E13] flex items-center justify-between">
+      <div className="px-6 py-4 border-b border-line bg-surface flex items-center justify-between">
         <div>
           <span className="font-mono text-[0.625rem] text-accent uppercase tracking-widest block font-semibold">
             CHECKING PHOTOS
@@ -44,7 +44,7 @@ export function ProcessingStage({
                     isCompleted
                       ? 'bg-ok/15 border-ok text-ok'
                       : isCurrent
-                      ? 'bg-accent/20 border-accent text-accent animate-pulse'
+                      ? 'bg-softAccent border-accent text-accent animate-pulse'
                       : 'bg-panel border-line text-faint'
                   }`}
                 >
@@ -85,7 +85,7 @@ export function ProcessingStage({
 
                   {/* Progress bar on the active step */}
                   {isCurrent && (
-                    <div className="w-full h-1 bg-[#07090C] border border-line mt-2 overflow-hidden">
+                    <div className="w-full h-1 bg-bg border border-line mt-2 overflow-hidden">
                       <div
                         className="h-full bg-accent transition-all duration-300 ease-out"
                         style={{ width: `${progress}%` }}
@@ -104,7 +104,7 @@ export function ProcessingStage({
             <span>TOTAL PROGRESS</span>
             <span className="text-text font-bold">{progress}%</span>
           </div>
-          <div className="w-full h-1.5 bg-[#07090C] border border-line overflow-hidden">
+          <div className="w-full h-1.5 bg-bg border border-line overflow-hidden">
             <div
               className="h-full bg-accent transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
@@ -120,7 +120,7 @@ export function ProcessingStage({
             variant="ghost"
             onClick={onCancel}
             icon={X}
-            className="border-line text-muted hover:text-text hover:border-faint"
+            className="border-line text-muted hover:text-text hover:border-accent"
           >
             Cancel
           </ChamferButton>
@@ -128,7 +128,7 @@ export function ProcessingStage({
       </div>
 
       {/* Telemetry Note */}
-      <div className="font-mono text-[0.625rem] text-faint text-center py-3 border-t border-line bg-[#0A0E13]">
+      <div className="font-mono text-[0.625rem] text-faint text-center py-3 border-t border-line bg-surface">
         Fast results powered by AI
       </div>
     </div>

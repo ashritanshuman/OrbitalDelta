@@ -44,6 +44,7 @@ export function UseCases() {
       category="USES"
       title="Where this can help"
       rightContent="REAL-WORLD EXAMPLES"
+      className="bg-surface"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cases.map((c, idx) => (

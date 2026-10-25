@@ -44,22 +44,22 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   let y = 16;
 
   // Background style
-  doc.setFillColor(7, 9, 12); // #07090C
+  doc.setFillColor(244, 243, 238); // #F4F3EE
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
   // Header Box
-  doc.setFillColor(14, 18, 23); // #0E1217
-  doc.setDrawColor(35, 42, 51); // #232A33
+  doc.setFillColor(236, 234, 227); // #ECEAE3
+  doc.setDrawColor(185, 182, 173); // #B9B6AD
   doc.setLineWidth(0.3);
   doc.rect(margin, y, pageWidth - margin * 2, 22, 'FD');
 
   // Top Title & Classification
-  doc.setTextColor(255, 90, 31); // Accent
+  doc.setTextColor(241, 90, 36); // #F15A24 Accent
   doc.setFont('courier', 'bold');
   doc.setFontSize(10);
   doc.text('ORBITAL DELTA // SATELLITE PHOTO REPORT', margin + 4, y + 6);
 
-  doc.setTextColor(138, 146, 157); // Muted
+  doc.setTextColor(98, 106, 115); // #626A73 Muted
   doc.setFont('courier', 'normal');
   doc.setFontSize(8);
   const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
@@ -69,36 +69,36 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   y += 28;
 
   // Key Telemetry Metrics Strip
-  doc.setFillColor(14, 18, 23);
+  doc.setFillColor(236, 234, 227);
   doc.rect(margin, y, pageWidth - margin * 2, 16, 'FD');
 
   const colWidth = (pageWidth - margin * 2) / 3;
 
   // Metric 1: Changed Area
-  doc.setTextColor(138, 146, 157);
+  doc.setTextColor(98, 106, 115);
   doc.setFontSize(7);
   doc.text('AREA CHANGED', margin + 4, y + 5);
-  doc.setTextColor(255, 90, 31);
+  doc.setTextColor(241, 90, 36);
   doc.setFontSize(12);
   doc.setFont('courier', 'bold');
   doc.text(formatPercent(result.changed_area_percent), margin + 4, y + 12);
 
   // Metric 2: Regions Detected
-  doc.setTextColor(138, 146, 157);
+  doc.setTextColor(98, 106, 115);
   doc.setFont('courier', 'normal');
   doc.setFontSize(7);
   doc.text('CHANGES FOUND', margin + colWidth + 4, y + 5);
-  doc.setTextColor(236, 238, 241);
+  doc.setTextColor(28, 34, 40);
   doc.setFontSize(12);
   doc.setFont('courier', 'bold');
   doc.text(`${(result.regions && result.regions.length) || 0} AREAS`, margin + colWidth + 4, y + 12);
 
   // Metric 3: Confidence
-  doc.setTextColor(138, 146, 157);
+  doc.setTextColor(98, 106, 115);
   doc.setFont('courier', 'normal');
   doc.setFontSize(7);
   doc.text('HOW SURE THE AI IS', margin + colWidth * 2 + 4, y + 5);
-  doc.setTextColor(61, 220, 132); // #3DDC84 ok
+  doc.setTextColor(40, 107, 73); // #286B49 Success
   doc.setFontSize(12);
   doc.setFont('courier', 'bold');
   doc.text(formatConfidence(result.avg_confidence), margin + colWidth * 2 + 4, y + 12);
@@ -115,7 +115,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   ]);
 
   // Before Box
-  doc.setFillColor(14, 18, 23);
+  doc.setFillColor(236, 234, 227);
   doc.rect(margin, y, imgBoxW, imgBoxH, 'FD');
   if (b64Before) {
     try {
@@ -124,7 +124,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
       // image fallback
     }
   }
-  doc.setTextColor(138, 146, 157);
+  doc.setTextColor(98, 106, 115);
   doc.setFontSize(7);
   doc.setFont('courier', 'bold');
   doc.text('BEFORE PHOTO', margin + 3, y + imgBoxH - 2);
@@ -138,21 +138,21 @@ export async function generateReport(result, beforeUrl, afterUrl) {
       // image fallback
     }
   }
-  doc.setTextColor(255, 90, 31);
+  doc.setTextColor(241, 90, 36);
   doc.text('AFTER PHOTO', margin + imgBoxW + 9, y + imgBoxH - 2);
 
   y += imgBoxH + 8;
 
   // Region Table Header
-  doc.setTextColor(236, 238, 241);
+  doc.setTextColor(28, 34, 40); // #1C2228 Primary Text
   doc.setFontSize(9);
   doc.setFont('courier', 'bold');
   doc.text('CHANGED AREAS', margin, y);
   y += 4;
 
-  doc.setFillColor(20, 26, 33);
+  doc.setFillColor(234, 232, 224); // #EAE8E0 Surface
   doc.rect(margin, y, pageWidth - margin * 2, 6, 'FD');
-  doc.setTextColor(138, 146, 157);
+  doc.setTextColor(98, 106, 115); // #626A73 Muted
   doc.setFontSize(7);
   doc.text('ID', margin + 2, y + 4);
   doc.text('TYPE', margin + 14, y + 4);
@@ -165,25 +165,25 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   const regions = result.regions || [];
   regions.forEach((r, idx) => {
     const isEven = idx % 2 === 0;
-    doc.setFillColor(isEven ? 14 : 11, isEven ? 18 : 14, isEven ? 23 : 19);
+    doc.setFillColor(isEven ? 244 : 236, isEven ? 243 : 234, isEven ? 238 : 227);
     doc.rect(margin, y, pageWidth - margin * 2, 7, 'FD');
 
     doc.setFont('courier', 'bold');
-    doc.setTextColor(255, 90, 31);
+    doc.setTextColor(241, 90, 36);
     doc.text(r.id || `R${idx + 1}`, margin + 2, y + 5);
 
     const isHuman = r.classification === 'human-made';
-    doc.setTextColor(isHuman ? 255 : 138, isHuman ? 90 : 146, isHuman ? 31 : 157);
+    doc.setTextColor(isHuman ? 241 : 98, isHuman ? 90 : 106, isHuman ? 36 : 115);
     doc.text(isHuman ? 'HUMAN' : 'NATURAL', margin + 14, y + 5);
 
-    doc.setTextColor(236, 238, 241);
+    doc.setTextColor(28, 34, 40);
     doc.setFont('courier', 'normal');
     doc.text(r.label || '-', margin + 46, y + 5);
 
-    doc.setTextColor(61, 220, 132);
+    doc.setTextColor(40, 107, 73);
     doc.text(formatConfidence(r.confidence), margin + 84, y + 5);
 
-    doc.setTextColor(138, 146, 157);
+    doc.setTextColor(98, 106, 115);
     const desc = r.description || '-';
     doc.text(desc.length > 45 ? desc.substring(0, 42) + '...' : desc, margin + 104, y + 5);
 
@@ -194,17 +194,17 @@ export async function generateReport(result, beforeUrl, afterUrl) {
 
   // Summary Report Narrative
   if (result.report && result.report.length > 0) {
-    doc.setTextColor(236, 238, 241);
+    doc.setTextColor(28, 34, 40);
     doc.setFont('courier', 'bold');
     doc.setFontSize(9);
     doc.text('SUMMARY', margin, y);
     y += 4;
 
-    doc.setFillColor(14, 18, 23);
+    doc.setFillColor(236, 234, 227);
     const reportBoxH = 36;
     doc.rect(margin, y, pageWidth - margin * 2, reportBoxH, 'FD');
 
-    doc.setTextColor(170, 178, 188);
+    doc.setTextColor(45, 52, 60);
     doc.setFont('courier', 'normal');
     doc.setFontSize(7.5);
     
@@ -217,7 +217,7 @@ export async function generateReport(result, beforeUrl, afterUrl) {
   }
 
   // Footer Disclaimer
-  doc.setTextColor(90, 98, 109);
+  doc.setTextColor(133, 137, 130); // #858982 Faint
   doc.setFontSize(6.5);
   doc.setFont('courier', 'normal');
   doc.text('ORBITAL DELTA - Hackathon prototype. AI results should be checked by a person.', margin, pageHeight - 6);

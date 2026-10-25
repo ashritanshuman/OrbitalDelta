@@ -21,12 +21,12 @@ export function RegionRow({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
-      className={`p-3 bg-[#07090C] border transition-all duration-150 cursor-pointer ${
+      className={`p-3 border transition-all duration-150 cursor-pointer ${
         active
           ? isHuman
-            ? 'border-accent bg-accent/10 shadow-[0_0_0.625rem_rgba(255,90,31,0.2)]'
-            : 'border-muted bg-white/5'
-          : 'border-line hover:border-line/90'
+            ? 'border-accent bg-softAccent shadow-sm'
+            : 'border-line bg-surface'
+          : 'border-line hover:border-accent/60 bg-bg'
       }`}
     >
       {/* Top Header */}

@@ -8,15 +8,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "#07090C",
-        panel: "#0E1217",
-        line: "#232A33",
-        text: "#ECEEF1",
-        muted: "#8A929D",
-        faint: "#5A626D",
-        accent: "#FF5A1F",
-        ok: "#3DDC84",
-        warn: "#FFB020",
+        bg: "#F4F3EE",         // Primary background: warm ivory, never pure white
+        surface: "#EAE8E0",    // Secondary background: muted sandstone for alternating sections
+        panel: "#ECEAE3",      // Panel surface: subtle surface differentiation
+        text: "#1C2228",       // Primary text: deep graphite, not absolute black
+        muted: "#626A73",      // Secondary text: muted slate
+        faint: "#858982",      // Tertiary text: subdued supporting labels
+        line: "#B9B6AD",       // Borders: fine mineral-grey outlines
+        grid: "#DCD9D0",       // Technical grid lines: extremely subtle, low-contrast lines
+        accent: "#F15A24",     // Primary accent: signal orange
+        softAccent: "#F8E4DA", // Soft orange surface: restrained background for selected states
+        ok: "#286B49",         // Success: system status and completed steps
+        warn: "#96600A",       // Warning: warnings and errors that require attention
+        error: "#B9382B",      // Error: explicit failure states
       },
       fontFamily: {
         display: ["Michroma", "sans-serif"],

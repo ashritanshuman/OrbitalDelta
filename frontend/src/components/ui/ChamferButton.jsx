@@ -17,14 +17,17 @@ export function ChamferButton({
     lg: 'px-7 py-3 text-sm',
   };
 
-  const baseStyles = 'inline-flex items-center justify-center font-mono font-semibold uppercase tracking-widest transition-all duration-150 select-none cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center font-mono font-semibold uppercase tracking-widest transition-all duration-150 ease-out select-none cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-bg';
 
   const variantStyles = {
     primary: disabled
-      ? 'bg-[#181c21] text-[#5A626D] border border-[#232A33] cursor-not-allowed opacity-60'
-      : 'bg-transparent border border-accent text-text hover:bg-accent hover:text-bg active:opacity-90',
+      ? 'bg-panel text-faint border border-line cursor-not-allowed opacity-60'
+      : 'bg-accent border border-accent text-white hover:brightness-105 active:opacity-90 shadow-sm',
+    secondary: disabled
+      ? 'bg-panel text-faint border border-line cursor-not-allowed opacity-60'
+      : 'bg-panel text-text border border-line hover:border-accent hover:text-accent active:bg-surface',
     ghost: disabled
-      ? 'bg-transparent text-[#5A626D] border border-transparent cursor-not-allowed'
+      ? 'bg-transparent text-faint border border-transparent cursor-not-allowed'
       : 'bg-transparent text-muted hover:text-text border border-transparent hover:border-line hover:bg-panel',
   };
 

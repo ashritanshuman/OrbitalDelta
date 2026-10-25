@@ -40,7 +40,7 @@ export function ResultsStage({
   return (
     <div className="w-full flex flex-col">
       {/* Top Controller Header Strip */}
-      <div className="w-full border-b border-line bg-[#0A0E13] px-4 py-2 flex flex-wrap items-center justify-between gap-3 font-mono text-[0.625rem]">
+      <div className="w-full border-b border-line bg-surface px-4 py-2 flex flex-wrap items-center justify-between gap-3 font-mono text-[0.625rem]">
         <div className="flex items-center gap-2">
           <span className="px-2.5 py-0.5 uppercase tracking-wider text-text bg-panel border border-accent font-semibold">
             RESULTS
@@ -103,7 +103,7 @@ export function ResultsStage({
 
       {/* Full-width Benchmark Preset Selector in Results View */}
       {presets && presets.length > 0 && (
-        <div className="p-4 bg-[#0A0E13] border-t border-line">
+        <div className="p-4 bg-surface border-t border-line">
           <PresetDatasets
             presets={presets}
             activePresetId={activePresetId}
