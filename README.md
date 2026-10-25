@@ -107,33 +107,101 @@
 
 ---
 
-## 🚀 Quick Start Guide
+## 🚀 How to Run the Project Locally
+
+Follow these step-by-step instructions to set up and run both the FastAPI backend and React frontend locally.
 
 ### Prerequisites
-- Linux / macOS / WSL
-- Python 3.11+ (Python 3.12 recommended)
-- Node.js 18+ and npm
 
-### 1. Launch Backend Server
+Ensure you have the following installed on your machine:
+- **Operating System**: Linux (Ubuntu 20.04+ recommended), macOS, or Windows (WSL2)
+- **Python**: `3.11` or `3.12` (`python3 --version`)
+- **Node.js**: `18.x` or `20.x` (`node -v`) & `npm` (`npm -v`)
+- **Git**: `git --version`
+
+---
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/ashritanshuman/OrbitalDelta.git
+cd OrbitalDelta
+```
+
+---
+
+### Step 2: Start the FastAPI Backend
+
+Open a terminal and run:
 
 ```bash
 cd backend
+
+# 1. (Optional) Set up environment variables
+cp .env.example .env
+
+# 2. Run the automated startup script
+chmod +x run.sh
 ./run.sh
 ```
-- Automatically initializes virtual environment `.venv` using Python 3.12/3.11.
-- Installs pinned dependencies from `requirements.txt`.
-- Starts Uvicorn server on port 8000 (auto-detects port 8002 if 8000 is occupied).
-- Interactive Swagger UI: **[http://localhost:8002/docs](http://localhost:8002/docs)**
 
-### 2. Launch Frontend Application
+> **What `run.sh` does automatically:**
+> - Detects Python 3.12/3.11 and creates the virtual environment `.venv/` if missing.
+> - Upgrades `pip` and installs pinned dependencies from `requirements.txt`.
+> - Checks port availability (defaults to `8000`; if occupied by a system service, automatically switches to `8002`).
+> - Starts Uvicorn with hot-reload enabled.
+
+#### Manual Backend Setup (Alternative without `run.sh`):
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+- **Backend Health Check**: [http://localhost:8000/api/health](http://localhost:8000/api/health) *(or [http://localhost:8002/api/health](http://localhost:8002/api/health))*
+- **Interactive OpenAPI / Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs) *(or [http://localhost:8002/docs](http://localhost:8002/docs))*
+
+---
+
+### Step 3: Start the React Frontend
+
+Open a **second terminal** in the project root and run:
 
 ```bash
 cd frontend
+
+# 1. Install Node dependencies
 npm install
+
+# 2. (Optional) Configure environment variables
+# Ensure VITE_API_URL matches your running backend port (e.g. http://localhost:8000 or http://localhost:8002)
+# Set VITE_USE_MOCK=false to connect to the live backend
+cp .env.example .env
+
+# 3. Start the Vite development server
 npm run dev
 ```
-- Starts Vite dev server on **[http://localhost:5173](http://localhost:5173)**.
-- Pre-configured to communicate with the live backend (`VITE_USE_MOCK=false`).
+
+The web console will be available at:
+👉 **[http://localhost:5173](http://localhost:5173)**
+
+---
+
+### Step 4: Verify Local Setup
+
+Once both servers are running, test connectivity from your terminal:
+
+```bash
+# Verify backend responds
+curl -s http://localhost:8002/api/health || curl -s http://localhost:8000/api/health
+
+# Verify frontend serves HTML
+curl -sI http://localhost:5173 | head -n 5
+```
 
 ---
 
